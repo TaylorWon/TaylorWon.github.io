@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="����,����,����,˼��,����" />
+   
+  <meta name="description" content="�������" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Github+Hexo搭建个人网站 |  ��
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="��" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-Github-Hexo web" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Github+Hexo搭建个人网站
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cka0u3h7l0007awgx7pmuer4d/" class="article-date">
+  <time datetime="2020-02-17T16:00:00.000Z" itemprop="datePublished">2020-02-18</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.2k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">12分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/gh_cover.png" style="zoom:40%">
+</div>
+
+
+<p>使用github pages服务搭建博客的优势：</p>
+<ul>
+<li>全部是静态文件，访问速度快</li>
+<li>免费方便，不用服务器不需要后台</li>
+<li>可以随意绑定自己的域名</li>
+<li>数据安全，基于github的版本管理</li>
+<li>博客内容可以轻松打包转移发布到其他的平台</li>
+<li>…</li>
+</ul>
+<hr>
+<p>下面，就是基于Github和Hexo，从0到1搭建一个完全属于你自己的网站。按照这个步骤进行操作的话，你很快就会拥有一个属于自己的个性化网站。</p>
+<hr>
+<a id="more"></a>
+
+
+
+<h3 id="创建Github个人仓库"><a href="#创建Github个人仓库" class="headerlink" title="创建Github个人仓库"></a>创建Github个人仓库</h3><p>进入到GitHub网站，登录(注册)你的GitHub账号，点击GitHub中的New repository创建新仓库，仓库名称必须为username.github.io，其中username是你的用户名，(你的用户名.github.io)，这个是固定写法，比如我的仓库为：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/github01.png" style="zoom:80%">
+</div>
+
+
+
+<p>这样将来你的网站访问地址就是username.github.io，非常方便。</p>
+<p>由此可见，每一个github账户最多可创建一个这样直接使用域名访问的仓库。</p>
+<hr>
+<h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p>Git是开源的分布式版本控制系统，用于敏捷高效的处理项目。我们网站在本地搭建好之后，需要使用Git同步到GitHub上。可以安装git for windows(或者其他的git客户端)</p>
+<p>安装成功后，需要将你的Git与GitHub账户绑定。在菜单栏中搜索Git Bash，设置user.name和user.email配置信息：(输入时候含有引号)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;你的GitHub用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<p>生成ssh密钥文件：(也是在Git Bash中)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;你的GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<p>然后直接三个回车操作，默认不需要设置密码。然后，找到生成的.ssh的文件夹中的id_rsa.pub文件，将里面的内容全部复制：（注意：id_rsa.pub为公钥文件，可以公开；id_rsa为私钥文件，保密）</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/github02.png" style="zoom:60%">
+</div>
+
+
+
+<p>之后，登录GitHub，打开settings界面，选择SSH and GPG keys，选择New SSH Key选项。</p>
+<p>如图所示：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/github03.png" style="zoom:70%">
+</div>
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/github04.png" style="zoom:80%">
+</div>
+
+
+
+<p>Title为标题，任意填写即可。将刚刚复制的id_ras.pub中的内容粘贴在Key里面，最后点击Add SSH Key即可。</p>
+<p>在Git Bash中检测GitHub公钥是否设置成功，输入ssh git @ github.com: 检测结果如图所示：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/github05.png" style="zoom:80%">
+</div>
+
+
+
+<p>如上提示，即说明了设置成功。</p>
+<p>这里之所以设置GitHub密钥原因是，通过非对称加密的公钥与私钥来完成加密，公钥放置在GitHub上，私钥放置在自己的电脑里。GitHub要求每次推送代码都是合法用户，所以每次推送都需要输入账号密码验证推送用户是否是合法用户，为了省去每次输入密码的步骤，采用了ssh，当你推送的时候，git就会匹配你的私钥跟GitHub上面的公钥是否是配对的，若是匹配就认为你是合法用户，则允许推送。这样可以保证每次的推送都是正确合法的。使用ssh key解决了本地和服务器的连接问题。</p>
+<hr>
+<h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h3><p>Hexo基于Node.js，在Node.js官网中下载安装包。按照默认提示一路安装。注意安装Node.js会包含环境变量以及npm的安装，安装后，检测Node.js是否安装成功，在win的cmd命令行中输入node -v，检测npm是否安装成功，输入npm -v。假如如下图出现安装的版本号，说明Node.js和npm安装成功了。</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/nodejs01.png" style="zoom:80%">
+</div>
+
+
+
+<p>到此，安装Hexo的环境已经全部搭建完成。</p>
+<p>Windows7<br>node.js @ v12.16.0<br>npm @ 6.13.4<br>git @ 2.9.0<br>hexo @ 3.1.0</p>
+<hr>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>Hexo是一款基于Node.js的静态博客框架，依赖少易安装使用，可以方便的生成静态网页托管在Github上，是搭建博客的首选框架。</p>
+<p>首先需要在本地电脑中创建一个文件夹，Hexo框架和以后你自己发布的网页均在这个文件夹中，所以设置好之后，此文件夹最好不要随意改动。可以命名为SelfWeb。右键单击SelfWeb文件夹，选择Git Bash Here，进入Git Bash界面。(所有的命令行操作推荐使用Git Bash)</p>
+<p>然后，使用npm命令安装Hexo，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>安装好之后，使用命令 hexo -v 查看版本号，进行检测。</p>
+<p>接下来，对hexo进行初始化，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<p>hexo会自动下载一些文件到这个目录。</p>
+<p>然后，进入这个SelfWeb文件夹地址，在GitBash中输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>然后，执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g # 生成</span><br><span class="line">hexo s # 启动服务。ctrl+c关闭此服务器</span><br></pre></td></tr></table></figure>
+
+<p>之后，hexo就会在public文件夹中生成相关的html文件，这些文件将来都是要提交到github去的。</p>
+<p>最后，在浏览器中访问<a href="http://localhost:4000" target="_blank" rel="noopener">localhost:4000</a>，既可以看到网页发布的内容。第一次初始化后，hexo已经帮助我们写了一篇名为Hello World的文章。此时进行的操作，只是在本地预览。</p>
+<p>(注意此处的localhost:4000网址，不要直接写到markdown明文下面，在hexo g 过程中会报错。)</p>
+<hr>
+<h3 id="推送网站"><a href="#推送网站" class="headerlink" title="推送网站"></a>推送网站</h3><p>上面的操作只是在本地预览，接下来要做的就是进行推送网站，也就是发布网站，让我们的网站可以被更过的人访问。</p>
+<p>将Hexo和GitHub关联起来，打开处在根目录下的站点的配置文件_config.yml，将最后的deploy部分修改如下，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type:git</span><br><span class="line">repository:填入你之前在Github上创建仓库的完整路径，记得加上.git</span><br><span class="line">branch:master</span><br></pre></td></tr></table></figure>
+
+<p>参考如下：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/hexo01.png" style="zoom:40%">
+</div>
+
+
+
+<p>保存站点配置文件。</p>
+<p>此时还需要安装一个Git部署插件，在SelfWeb文件夹中使用Git Bash打开命令行，输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>然后输入下面三条命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g # 生成</span><br><span class="line">hexo d #部署网站</span><br></pre></td></tr></table></figure>
+
+<p>完成之后，打开浏览器，在地址栏中输入放置个人网站的仓库路径，即username.github.io，即可以在网络上进行访问了。</p>
+<p>比如我的Gituhub用户名：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/web01.png" style="zoom:80%">
+</div>
+------
+
+<h3 id="域名绑定"><a href="#域名绑定" class="headerlink" title="域名绑定"></a>域名绑定</h3><p>通过上面的操作之后，可以使用默认的username.github.io来访问创建的网站。假如想要有一个更加个性</p>
+<p>首先，注册一个网站域名，专属于自己的个人网站域名。申请域名可以选择阿里云。如果你已经有了空闲的域名就无需购买，直接使用即可。(这里也是唯一一处可能需要花钱的地方。)</p>
+<p>如下图所示，是我在阿里云上购买的网站域名，以及根据自己的github.io设置的解析：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/webdomain01.png" style="zoom:40%">
+</div>
+
+<div align="center">
+        <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/webdomain02.png" style="zoom:40%">
+</div>
+
+
+
+<p>域名配置最常见的有2种方式，CNAME和A记录，CNAME填写域名，A记录填写IP。在填写A记录时候，需要先在cmd中ping一下username.github.io的IP地址。在CNAME中，记录值为username.github.io。</p>
+<p>购买设置好域名之后，需要在github中进行设置。</p>
+<p>1 登录GitHub，进入之前创建的仓库username.github.io，点击settings，在GitHub Pages页面中，设置Custom domain，输入你购买的域名，如下图是我购买的域名：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/webdomain03.png" style="zoom:40%">
+</div>
+
+
+
+<p>之后，点击save保存。</p>
+<p>2 进入本地的博客文件夹，进入E:\SynologyDrive\Hobby\SelfWeb\source\目录下，创建一个记事本文件，输入你的域名，最好不要带有www的格式。如图所示：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/webdomain04.png" style="zoom:40%">
+</div>
+
+
+
+<p>保存为CNAME文件，注意保存成所有文件而不是txt文件。</p>
+<p>在绑定了新域名之后，原来的username.github.io并没有失效，而是会自动跳转到你的新域名。</p>
+<hr>
+<p>完成以上操作之后，在SelfWeb目录中，使用Git Bash命令进入命令行，依次输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>这时候，打开浏览器，在地址栏上输入你的个性化域名，就会直接进入你自己搭建的网站。</p>
+<hr>
+<p>通过以上操作，就可以实现了个人网页的搭建，既可以使用github.io访问，也可以使用个性化域名登录。</p>
+<p>下面的内容，就是如何在网页上发布文章，以及进行相关的个性化设置。</p>
+<hr>
+<h3 id="Hexo命令"><a href="#Hexo命令" class="headerlink" title="Hexo命令"></a>Hexo命令</h3><p>常用的Hexo命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo -g <span class="comment">#安装hexo</span></span><br><span class="line">$ npm update dexo -g <span class="comment">#升级</span></span><br><span class="line">$ hexo init <span class="comment">#初始化博客</span></span><br><span class="line"></span><br><span class="line">$ hexo new <span class="string">"my blog"</span> <span class="comment"># 新建文章，实际命令行中无需引号</span></span><br><span class="line">$ hexo generate <span class="comment"># 生成静态页面至public目录</span></span><br><span class="line">$ hexo serve <span class="comment"># 启动服务预览</span></span><br><span class="line">$ hexo deploy <span class="comment"># 部署到github</span></span><br><span class="line">$ hexo <span class="built_in">help</span></span><br><span class="line">$ hexo version</span><br><span class="line">$ hexo clean <span class="comment"># 清除缓存</span></span><br></pre></td></tr></table></figure>
+
+<p>命令缩写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo n == hexo new </span><br><span class="line">$ hexo g == hexo generate </span><br><span class="line">$ hexo s == hexo serve </span><br><span class="line">$ hexo d == hexo deploy</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean <span class="comment"># 清除缓存</span></span><br></pre></td></tr></table></figure>
+
+<p>假如在重新进行deploy过程中，出现网页没有更新的问题，可以尝试将根目录下的.deploy_git文件夹删除掉。之后，在进行hexo d操作。</p>
+<p>或者是根据错误的信息，尝试下面的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ env GIT_SSL_NO_VERIFY=ture hexo d</span><br></pre></td></tr></table></figure>
+
+<p>同时，还需要注意，在国内有时候登录GitHub网站不稳定，导致无法访问github中的repo，导致hexo d失败。</p>
+<hr>
+<h3 id="Hexo主题"><a href="#Hexo主题" class="headerlink" title="Hexo主题"></a>Hexo主题</h3><p>可以选择不同风格的Hexo主题。当选择好要使用的主题后，首先需要下载这个主题。所有的操作还是在SelfWeb这个文件夹地址下，使用Git Bash命令。</p>
+<p>比如下载一个Next主题，代码如下：(不同主题的git clone代码不一样)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
+
+<p>这样，就是将next主题下载到了SelfWeb目录下的themes主题下的next文件夹中。</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/hexotheme01.png" style="zoom:40%">
+</div>
+
+
+
+<p>然后，打开站点的_config.yml配置文件，修改主题为next:</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/hexotheme02.png" style="zoom:60%">
+</div>
+
+
+
+<p>接下来，打开themes文件下里面的next文件夹下的主题的_config.yml配置文件，找到Scheme Settings部分，</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/hexotheme03.png" style="zoom:60%">
+</div>
+
+
+
+<p>可以根据自己的喜好，来选择不同的风格。</p>
+<p>修改保存完之后，再次在Git Bash里面运行hexo g, hexo d命令，查看最终的效果。假如出现了其他的问题，可以先运行hexo clean来清理一下public的内容。</p>
+<p>如果，需要修改为其他风格的主题，步骤和上面的完全一样。</p>
+<hr>
+<p>Hexo可使用的主题List以及示例：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Next主题 -- </span><br><span class="line">Pisces scheme </span><br><span class="line">example:https://notes.iissnan.com/</span><br><span class="line">官方文档:http://theme-next.iissnan.com/</span><br><span class="line">进阶配置:https://www.jianshu.com/p/1f8107a8778c</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Diaspora主题 -- </span><br><span class="line">example:http://fech.in/</span><br><span class="line">Github地址:https://github.com/Fechin/hexo-theme-diaspora</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Chic主题 --</span><br><span class="line">Github地址:https://github.com/Siricee/hexo-theme-Chic</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Ayer主题 -- </span><br><span class="line">example:https://shen-yu.gitee.io/</span><br><span class="line">Gthub地址:https://github.com/Shen-Yu/hexo-theme-ayer</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="个性化设置"><a href="#个性化设置" class="headerlink" title="个性化设置"></a>个性化设置</h3><p>下面，在选择主题 – hexo-theme-Ayer基础上，对其进行个性化设置。</p>
+<p>参考教程为：<a href="https://shen-yu.gitee.io/2019/ayer/" target="_blank" rel="noopener">Ayer中文说明</a></p>
+<hr>
+<h3 id="撰写文章"><a href="#撰写文章" class="headerlink" title="撰写文章"></a>撰写文章</h3><p>首先，定位到SelfWeb根目录地址下，使用GitBash运行，执行命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new my-first-blog</span><br></pre></td></tr></table></figure>
+
+<p>这样hexo会在./source/_posts/地址下生成相关的md文件。</p>
+<p>然后，使用电脑中安装的markdown编辑软件(Typora)进行编辑。</p>
+<p>markdown文件的文件头格式的修改：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title:</span><br><span class="line">date: yyyy-mm-dd hh:mm:ss</span><br><span class="line">id:</span><br><span class="line">tags:</span><br><span class="line"><span class="bullet">	- </span>1</span><br><span class="line"><span class="bullet">	- </span>2</span><br><span class="line">categories:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>最后，将此markdown文件编写好之后，进行后续的操作将其发布到网站上去：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+
+<h3 id="Git分支进行多终端工作"><a href="#Git分支进行多终端工作" class="headerlink" title="Git分支进行多终端工作"></a>Git分支进行多终端工作</h3><p>当使用不同的电脑工作时候，需要登录到网站上进行操作，那么需要利用git的分支系统进行多终端工作。</p>
+<p>未完待续 …</p>
+<hr>
+<h3 id="图床搭建"><a href="#图床搭建" class="headerlink" title="图床搭建"></a>图床搭建</h3><p>图床工具，就是自动把本地图片转换成链接的一款工具，本文中使用PicGo图片上传工具，配合GitHub图床进行设置。</p>
+<p>解决思路：将本地的文件，或者剪切板上面的截图发送到图床，然后生成在线图片的链接，走到哪里就可以用到哪里。</p>
+<p>具体的操作流程，参考网站：<a href="https://github.com/Molunerfinn/PicGo" target="_blank" rel="noopener">PicGo-GitHub</a>, <a href="https://www.jianshu.com/p/9d91355e8418" target="_blank" rel="noopener">图床工具的使用-PicGo</a>. <a href="https://picgo.github.io/PicGo-Doc/zh/guide/config.html#%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener">PicGo使用</a></p>
+<p>注意，在picgo中上传图片时候，可以上传到img/地址，还可以在这个下面进行子文件夹设置，如img/blog/。</p>
+<p>注意保证图片的链接是有效，且可以在国内访问的。</p>
+<p>在使用GitHub作为图床时候，有时候在博客中您无法加载上图床中的图片，现进行如下的设置：</p>
+<p>1 在hosts文件中，将GitHub相关的网站的IP地址和网站保存在这个文件中。</p>
+<p>199.232.28.133 raw.githubusercontent.com</p>
+<p>注意，在修改hosts文件时候，需要有管理员权限授权，进行相关的设置。</p>
+<p>2 在cmd中执行：ipconfig/flushdns 命令。</p>
+<p>3 重新访问github中的图片，发现可以打开浏览了，说明设置成功了。命令为：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">![](url)</span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span></span></span><br><span class="line"><span class="code">    &lt;img src="url" style="zoom:10%" /&gt;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"url"</span> <span class="attr">style</span>=<span class="string">"zoom:10%"</span> /&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://taylorwon.github.io/2020/cka0u3h7l0007awgx7pmuer4d/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/cka0u3h7r000eawgx7w6i2sct/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            科学论文搜索和阅读(How to search and read paper)
+          
+        </div>
+      </a>
+    
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'chaSYi8FMdJBwzIBpxeNjqWC-gzGzoHsz',
+        app_key: 'PqqkLYgPkHvH1BmyQqySWnSK',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        Taylor Won
+      </li>
+      <li>
+        
+          Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="��"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E9%9F%B3%E4%B9%90/">音乐</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">科研</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+
+
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['不够完美又何妨','万物皆有裂隙','那是光进来的地方'],
+    startDelay: 0,
+    typeSpeed: 200,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer:'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="����,����,����,˼��,����" />
+   
+  <meta name="description" content="�������" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Deep Learning 学习笔记 |  ��
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="��" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-Deep Learning 学习笔记" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Deep Learning 学习笔记
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/cka0u3h7j0006awgxeh5j75im/" class="article-date">
+  <time datetime="2020-02-29T16:00:00.000Z" itemprop="datePublished">2020-03-01</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">8分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h4 id="第一部分–PPT的学习"><a href="#第一部分–PPT的学习" class="headerlink" title="第一部分–PPT的学习"></a>第一部分–PPT的学习</h4><p><strong>《Learning Deep Architectures _ Bengio _ 2009》</strong></p>
+<p>这个PPT是Bengio对其经典论文“Learning Deep Architectures for AI” 的内容描述。</p>
+<a id="more"></a>
+
+<p>在deep learning之前，与之有关系的有两种：</p>
+<ul>
+<li>shallow learning, 典型例子是SVM, 可以看做是有一个隐含层的神经网络。而deep learning是有多个隐含层。</li>
+<li>deep neural network, 也是包含着多个隐含层的神经呢网络，不过使用的是典型的BP算法进行训练。而deep learning是引入了pre-training，提升了训练效果。</li>
+</ul>
+<p>deep learning在2006年取得突破，有三篇经典论文:</p>
+<ol>
+<li>Hinton, Osindero &amp; Teh, A Fast Learning Algorithm for Deep Belief Nets, Neural Computation, 2006. </li>
+<li>Bengio, Lamblin, Popovici, Larochelle, Greedy Layer-Wise Training of Deep Networks, NIPS, 2006. </li>
+<li>Ranzato, Poultney, Chopra, LeCun, Efficient Learning of Sparse Representations with an Energy-Based Model, NIPS, 2006.</li>
+</ol>
+<p>deep learning的 pre-training是用RBM(stacking restricted boltzman machines)做的。</p>
+<p><strong>《Tutorial on Deep Learning and Applications _ Honglak _ Bengio _ 2010》</strong></p>
+<p>此PPT是在“NIPS 2010 Workshop on Deep Learning and Unsupervised Feature Learning”上的报告。从内容上看，是与上述的《Learning Deep Architectures _ Bengio _ 2009》PPT重复，不过思路更加清晰。</p>
+<p><strong>《Machine Learning and AI via Brain simulations _ Andrew Ng _ 2013》</strong></p>
+<p>这是Andrew Ng在清华做的一篇PPT报告。</p>
+<p><strong>《Advanced topics + Research philosophy _ Andrew Ng _ 2013》</strong></p>
+<p>和上一篇是一起的。</p>
+<p><strong>《A Tutorial on Deep Learning _ KaiYu _ 2013》</strong></p>
+<p><strong>《Tutorial on Deep Belief Nets _ Hinton _ 2007 _ NIPS》</strong></p>
+<p>这是在2007年NIPS上的一个报告，当时DP刚刚起步。</p>
+<h4 id="第二部分-–-Deep-Learning的基本内容学习"><a href="#第二部分-–-Deep-Learning的基本内容学习" class="headerlink" title="第二部分 – Deep Learning的基本内容学习"></a>第二部分 – Deep Learning的基本内容学习</h4><p>通常所说的深度学习是属于机器学习的一部分，包含关系如下：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/2_dl_introduction_001.png" style="zoom:40%">
+</div>
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/2_dl_introduction_mldl_001.png" style="zoom:40%">
+</div>
+
+
+
+<p>深度学习是机器学习中一种基于对数据进行表征学习的方法，深度学习的好处是用非监督式或半监督式的特征学习、分层特征提取高效算法来替代手工获取特征。</p>
+<p>而在深度学习中经常提到的神经网络，是从大脑中的神经元借鉴过来的：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/2_dl_introduction_neural_network_001.png" style="zoom:40%">
+</div>
+
+
+
+<p>所以，深度学习就是基于多层神经网络的，海量数据为输入的，规则自学习方法。</p>
+<ul>
+<li>特征1，多层神经网络，可以更深入的表示特征</li>
+<li>特征2，海量数据输入，更强的函数模拟能力是由于随着层数的增加，整个网路的参数就越多，海量的参数训练就需要海量的数据</li>
+<li>特征3，规则自学习，数据驱动的“表示学习”范式，由数据自提取特征，计算机自己发现规则，进行学习。</li>
+</ul>
+<p>而深度学习的典型模型有：</p>
+<ul>
+<li>CNN (Convolutional Neural Networks)</li>
+<li>RNN (Recurrent Neural Networks)</li>
+<li>DRL (Deep Reinforcement Learning)</li>
+<li>GAN (Generative Adversarial Nets)</li>
+</ul>
+<p><strong>Neural Network: A Neuron</strong></p>
+<p>A neuron is a computational unit in the neural network that exchanges messages with each other.</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/2_dl_introduction_a_neural_001.png" style="zoom:40%">
+</div>
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/2_dl_introduction_a_neural_002.png" style="zoom:40%">
+</div>
+
+
+
+<p><strong>Feed forward/Backpropagation Neural Network</strong></p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/2_dl_introduction_feed_forward_001.png" style="zoom:40%">
+</div>
+
+
+
+<p>Feed forward algorithm: activate the neurons from the bottom to the top</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/2_dl_introduction_back_propagation_001.png" style="zoom:40%">
+</div>
+
+<p>Back-propagation: randomly initialize the parameters; calculate total error at the top $f_6(e)$; then calculate contributions to error $\delta_n$, at each step going backwards.</p>
+<h4 id="第五部分–深度学习开源框架"><a href="#第五部分–深度学习开源框架" class="headerlink" title="第五部分–深度学习开源框架"></a>第五部分–深度学习开源框架</h4><table>
+<thead>
+<tr>
+<th align="center">框架</th>
+<th align="center">机构</th>
+<th align="center">支持语言</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">TensorFlow</td>
+<td align="center">Google</td>
+<td align="center">Python/C++/Go/…</td>
+</tr>
+<tr>
+<td align="center">Caffe</td>
+<td align="center">BVLC</td>
+<td align="center">C++/Python</td>
+</tr>
+<tr>
+<td align="center">Keras</td>
+<td align="center">fchollet</td>
+<td align="center">Python</td>
+</tr>
+<tr>
+<td align="center">CNTK</td>
+<td align="center">Microsoft</td>
+<td align="center">C++</td>
+</tr>
+<tr>
+<td align="center">MXNet</td>
+<td align="center">DMLC</td>
+<td align="center">Python/C++/R/…</td>
+</tr>
+<tr>
+<td align="center">Torch7</td>
+<td align="center">Facebook</td>
+<td align="center">Lua</td>
+</tr>
+<tr>
+<td align="center">Theano</td>
+<td align="center">U.Montreal</td>
+<td align="center">Python</td>
+</tr>
+<tr>
+<td align="center">Deeplearning4J</td>
+<td align="center">DeepLearning4J</td>
+<td align="center">Java/Scala</td>
+</tr>
+<tr>
+<td align="center">Leaf</td>
+<td align="center">AutumnAI</td>
+<td align="center">Rust</td>
+</tr>
+<tr>
+<td align="center">Lasagne</td>
+<td align="center">Lasagne</td>
+<td align="center">Python</td>
+</tr>
+<tr>
+<td align="center">Neon</td>
+<td align="center">NervanaSystems</td>
+<td align="center">Python</td>
+</tr>
+</tbody></table>
+<p>对于今后的运用的话，可以重点学习：Scikit-kearn(主要是在机器学习中)，TensorFlow和Keras(用于深度学习中)。</p>
+<h5 id="TensorFlow"><a href="#TensorFlow" class="headerlink" title="TensorFlow"></a>TensorFlow</h5><p>官方网址：<br>GitHub:</p>
+<p>TensorFlow是一款开源的数学计算软件，使用数据流图(Data Flow Graph)的形式进行计算。图中的节点代表数学运算，而图中的线条表示多维数据数组(tensor)之间的交互。</p>
+<p>Data Flow Graph: 使用有向图的节点和边共同描述数学计算。节点nodes代表数学操作，也可以表示数据输入输出的端点，边表示节点之间的关系，传递操作之间互相使用的多维数组(tensors)。一旦节点相连的边传来了数据流，节点就被分配到计算设备上异步的(节点间)、并行的(节点内)执行。TensorBoard用来显示TensorFlow计算的图形。</p>
+<p>TensorFlow是相对高阶的机器学习库，用户可以方便地用它设计神经网络结构，而不必为了追求高效率的实现亲自写C++或CUDA代码。并且，除了核心代码的C++接口，TensorFlow还有官方的Python接口，通过SWIG (Simplified Wrapper and Interface Generator) 实现的。</p>
+<p>TensorFlow也有内置的TF.Learn和TF.Slim等上层组件可以帮助快速地设计新网络，并且兼容Scikit-Learn Estimator接口，可以方便的实现evaluate, grid search, cross validation等功能。</p>
+<p>TensorFlow的另一个重要特点就是它的灵活的移植性。并且可以充分利用硬件资源，TensorFlow可以将graph的不同计算单元分配到不同设备执行，使用TensorFlow处理副本。</p>
+<p>除了支持常见的网络结构 (卷积神经网络CNN，循环神经网络RNN) 外，TensorFlow还支持深度强化学习乃至其他计算密集的科学计算 (如偏微分方程求解等)。</p>
+<h5 id="Caffe"><a href="#Caffe" class="headerlink" title="Caffe"></a>Caffe</h5><p>官方网址：<br>GitHub：</p>
+<p>Caffe全称为Convolutional Architecture for Fast Feature Embedding, 是一个被广泛使用的，清晰而高效的开源深度学习框架。由加州大学伯克利的PHD贾扬清开发，目前由伯克利视觉学中心(Berkeley Vision and Learning Center, BVLC)进行维护。Caffe的主要优势包括：</p>
+<ul>
+<li>容易上手，网络结构都是以配置文件形式定义，不需要用代码设计网络。</li>
+<li>训练速度快，能够训练state-of-the-art的模型与大规模的数据。</li>
+<li>组件模块化，可以方便地拓展到新的模型和学习任务上。</li>
+</ul>
+<p>Caffe基本流程：Caffe遵循了神经网络的一个简单假设–所有的计算都是以layer的形式表示的，layer做的事情就是获取一些数据，然后输出一些计算以后的结果。</p>
+<p>所以，Caffe的核心概念是Layer，每一个神经网络的模块都是一个Layer。Layer接收输入数据，同时经过内部计算产生输出数据，每一个Layer需要定义两种运算，一种是正向(forward)运算，一种是反向(backward)运算。</p>
+<p>Caffe的一大优势是拥有大量训练好的经典模型(AlexNet, VGG, Inception)乃至其他state-of-the-art(ResNet)的模型，收藏在它的Model Zoo中。同时Caffe也提供了Python语言接口pycaffe。</p>
+<p>Caffe的优势：上手快，速度快，模块化，开放性，社区好(可通过BSD-2参与开发和讨论)。</p>
+<h5 id="Keras"><a href="#Keras" class="headerlink" title="Keras"></a>Keras</h5><p>官方网址：<br>GitHub：</p>
+<p>Keras是一个崇尚极简、高度模块化的神经网络库，使用python实现，并可以同时运行在TensorFlow和Theano上。旨在让用户进行最快速的原型实验，让想法变成结果的这个过程最短。TensorFlow和Theano的计算图支持更通用的计算，而Keras则专精于深度学习。</p>
+<h5 id="Scikit-Learn"><a href="#Scikit-Learn" class="headerlink" title="Scikit-Learn"></a>Scikit-Learn</h5><p>Scikit-kearn Python框架具有广泛的可靠的机器学习算法，但是没有深度学习算法。如果使用python的话，Scikit-kearn可能是一般机器学习库中的最佳选择。</p>
+<p>Scikit-kearn是一个强大的，成熟的机器学习python库，包含各种各样成熟的算法和集成图。但是不包括深度学习或者强化学习，缺少图模型和序列预测。</p>
+<p>Scikit-kearn对分类、回归、聚类、降维、模型选择和预处理算法具有很好的选择。</p>
+<h4 id="Learn-With-Google-AI-–TensorFlow"><a href="#Learn-With-Google-AI-–TensorFlow" class="headerlink" title="Learn With Google AI –TensorFlow"></a>Learn With Google AI –TensorFlow</h4><p>谷歌开放了像TensorFlow这样的高级项目，也有Doodles这样的低门槛且有趣的项目，这些项目旨在以更实用的方式展示AI。Google想通过把Learn with Google AI 网站作为机器学习和人工智能材料库，让人们能够“了解核心ML概念，开发和磨练ML技能，并将ML应用于现实世界”。</p>
+<p>Learn with Google AI 网站中一门名为机器学习速成班(Machine Learning Crash Course, MLCC)的免费课程。需要掌握的基础前期知识有入门级代数，编程基础知识和Python。</p>
+<p>Google机器学习网站：<a href="https://zhuanlan.zhihu.com/p/34129033" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/34129033</a></p>
+<p><a href="https://developers.google.cn/machine-learning/crash-course/ml-intro" target="_blank" rel="noopener">https://developers.google.cn/machine-learning/crash-course/ml-intro</a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://taylorwon.github.io/2020/cka0u3h7j0006awgxeh5j75im/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/cka0u3h7e0002awgx2b7g2ekv/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Deep learning Overview
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/cka0u3h7p000cawgx6lei7na4/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">从零开始掌握Python机器学习：十四步教程</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'chaSYi8FMdJBwzIBpxeNjqWC-gzGzoHsz',
+        app_key: 'PqqkLYgPkHvH1BmyQqySWnSK',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        Taylor Won
+      </li>
+      <li>
+        
+          Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="��"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E9%9F%B3%E4%B9%90/">音乐</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">科研</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+
+
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['不够完美又何妨','万物皆有裂隙','那是光进来的地方'],
+    startDelay: 0,
+    typeSpeed: 200,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer:'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,1279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Anaconda &amp; Jupyter Notebook</title>
+    <url>/2020/cka0u3h6z0000awgxbvt4elkh/</url>
+    <content><![CDATA[<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/python_00.png" style="zoom:40%">
+</div>
+
+<p>本文档主要是总结了在使用Python，Anaconda过程中，配置的过程和遇到的问题。同时，还会总结一些安装配置Tensorflow和Pytorch的相关内容。</p>
+<a id="more"></a>
+
+<hr>
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/python_01.png" style="zoom:40%">
+</div>
+在[python官网](https://www.python.org/)中，下载安装最新版本的python安装包。安装过程，选择默认安装(custom)。地址可以按照自己的需要进行修改，比如 "D://Python38"
+
+<p>在设置环境变量时候，在用户变量的path中，不要添加此python到环境变量中。</p>
+<hr>
+<p>在使用Python进行科学计算的时候，一般常用的库包括：</p>
+<ul>
+<li>爬虫 – Scrapy, beautifulsoup4, urllib, urllib2, selenium. </li>
+<li>机器学习 – scikit-learn, NLTK. </li>
+<li>网站 – Django, Flask. </li>
+<li>数据处理科学计算 – Numpy, Scipy, Pandas. </li>
+<li>可视化 – matplotlib, seaborn, ggplot, plotly.</li>
+<li>深度学习 – TensorFlow, PyTorch, </li>
+<li>量子系统学习 – QuTiP, Quspin, </li>
+</ul>
+<p>在此python环境下，一般不用再额外安装库。后续可根据自己实际科研学习过程中的需要，安装需要使用的库。</p>
+<hr>
+<h3 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h3><div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/anaconda_01.png" style="zoom:40%">
+</div>
+
+<p>简单来说，Anaconda是包管理器和环境管理器，附带了一大批常用的数据科学包，附带了conda, python 和150多个科学包及其依赖项。</p>
+<p>后续在使用Python过程宏，都是在anaconda中进行安装配置。从<a href="https://www.anaconda.com/" target="_blank" rel="noopener">Anaconda官网</a>上下载的最新版本的anaconda安装包，同时参考知乎上面的博文<a href="https://zhuanlan.zhihu.com/p/25198543" target="_blank" rel="noopener">“ 最省心的Python版本和第三方库管理–初探Anaconda”</a>，进行安装。同时注意，在安装过程中，在Advanced Options选项卡中，第一个”Add Anaconda to my PATH environment variable”复选框，不要选择；第二个”Register Anaconda as my default Python 3.7”复选框，选择。其他的选择项不变，一路安装下去。</p>
+<p>在所有安装完成后，使用==Anaconda Prompt==打开(称为”终端”)，并且输入相关的命令，验证是否安装成功。同时，后续打开时候都不会再选择WINDOWS系统的”cmd”，注意。</p>
+<p>安装完之后，anaconda中也已经安装好了很多科学包，后续自己需要安装包时候，可以在conda中安装，或者在anaconda navigator中安装。</p>
+<hr>
+<h4 id="Anaconda-Navigator"><a href="#Anaconda-Navigator" class="headerlink" title="Anaconda Navigator"></a>Anaconda Navigator</h4><p>Anaconda Navigator is a desktop graphical user interface included in Anaconda that allows you to launch applications and easily manage conda packages, environments and channels without the need to use command line commands.</p>
+<p>在安装好Anaconda 3之后，打开Anaconda Navigator之后，进行如下的设置：</p>
+<p>总的安装路径为： “D:\Anaconda3”。然后，在anaconda navigator中新建的环境，存放地址路径为： “D:\Anaconda3\envs”，不同的环境会自动创建相应名字的文件夹，里面存储了此环境的相关文件。</p>
+<p>在目前的配置中，安装了四个不同的环境，分别为base(root)(python3.7)，py27(python2.7)，tensorflow(python3.6)，以及pytorch(python3.6)，并且在navigator中，对每一个环境，都安装了spyder，ipykernel，conda等基本的库。其中，</p>
+<ul>
+<li>base(root)环境是一般编程时候使用的环境。</li>
+<li>py27是编写和调试python2代码时候使用的环境。</li>
+<li>tensorflow是学习调试tensorflow时候，需要打开的环境。</li>
+<li>pytorch是学习调试Pytorch时候，需要打开的环境。</li>
+</ul>
+<p>在<code>Anaconda Prompt</code>终端中，切换不同的环境时候，需要的命令行为–</p>
+<ul>
+<li>激活–  activate env_name</li>
+<li>退出–  conda deactiavte</li>
+</ul>
+<hr>
+<h4 id="Spyder"><a href="#Spyder" class="headerlink" title="Spyder"></a>Spyder</h4><p>Spyder is a powerful scientific environment written in Python, for Python, and designed by and for scientists, engineers and data analysts. It features a unique combination of the advanced editing, analysis, debugging and profiling functionality of a comprehensive development tool with the data exploration, interactive execution, deep inspection and beautiful visualization capabilities of a scientific package.n Furthermore, Spyder offers built-in integration with many popular scientific packages, including NumPy, SciPy, Pandas, IPython, QtConsole, Matplotlib, SymPy, and more.n Beyond its many built-in features, Spyder can be extended even further via third-party plugins.n Spyder can also be used as a PyQt5 extension library, allowing you to build upon its functionality and embed its components, such as the interactive console or advanced editor, in your own software.</p>
+<p>在navigator中安装了不同的环境，同时相应的下载了对应的spyder。在使用不同的环境调试代码的时候，需要打开不同的spyder。同时，对于spyder调试的代码文件，设定了不同的文件保存路径：==”E://SynologyDrive//Spyder//…”==</p>
+<p>Spyder的相关设置汇总–</p>
+<ol>
+<li><p>使用matplotlib.pyplot画图时候，一般使用独立的弹出式figure()，设置如下：</p>
+<p>tools -&gt; Preferences -&gt; IPython console -&gt; Graphics -&gt; Backend -&gt; Qt5</p>
+</li>
+<li></li>
+</ol>
+<p>Spyder编辑器相关命令汇总–</p>
+<ol>
+<li></li>
+</ol>
+<hr>
+<h4 id="Anaconda-Cloud"><a href="#Anaconda-Cloud" class="headerlink" title="Anaconda Cloud"></a>Anaconda Cloud</h4><p>使用Anaconda账号，登录Anaconda Cloud。</p>
+<p>Anaconda Cloud is a package management service that makes it easy to find, access, store and share public notebooks, environments, and conda and PyPI packages. Cloud also makes it easy to stay current with updates made to the packages and environments you are using.</p>
+<p>在终端”Anaconda Prompt”中输入如下的命令–</p>
+<p>上传notebooks:</p>
+<p>anaconda upload my-notebook.ipynb</p>
+<p>其中，将my-notebook.ipynb替换成本地文件的绝对地址路径。</p>
+<p>下载notebooks:</p>
+<p>anaconda download username/my-notebook</p>
+<p>NOTE: Replace <code>username</code> with your username, and <code>my-notebook</code> with the actual name of your notebook.</p>
+<p>同时，文件会被下载到”C://User”用户文件夹中。</p>
+<hr>
+<h4 id="Jupyter-Lab"><a href="#Jupyter-Lab" class="headerlink" title="Jupyter Lab"></a>Jupyter Lab</h4><p>Jupyter Lab is the next-generation user interface for Project Jupyter. It offers all the familiar building blocks of the classic Jupyter Notebook (notebook, terminal, text editor, file browser, rich outputs, etc.) in a flexible and powerful user inteface. Eventually, JupyterLab will replace the classic Jupyter Notebook. JupyterLab can be extended using extensions that are npm packages and use our public APIs. You can search for the GitHub topic or npm keyword <code>jupyterlab-extension</code> to find extensions. To learn more about extensions, see our user documentation. JupyterLab is suitable for general usage. For JupyterLab extension developers, the extension APIs will continue to evolve.</p>
+<p>JupyterLab作为一种基于Web的继承开发环境，可以使用它编写notebook、操作终端、编辑markdown文档、打开交互模式、查看csv文件以及图片等功能。可以说，jupyterlab是jupyter notebook的升级版本。最大的优势在于它的用户界面集成强，适合多文档协助工作。而且Lab是可拓展的，插件丰富。</p>
+<p>JupyterLab的特点：交互模式，内核支持的文档，模块化界面，镜像notebook输出，同一文档多视图，支持多种数据格式，云服务。</p>
+<p>在终端中输入命令：<code>jupyter lab</code>，即可进入jupyterlab界面。</p>
+<p>打开jupyterlab之后，也会进入一个Web界面。这里会显示已经安装好的notebook以及console等。选择其中的一个进行打开。同时，jupyterlab的地址和jupyter notebook的地址是一样的，里面打开的文件等都是一样的。</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/anaconda_02.png" style="zoom:40%">
+</div>
+
+
+<hr>
+<p>Jupyter Lab的使用技巧汇总–</p>
+<p>1 显示Jupyter Lab的插件栏。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">setting -&gt; advanced settings editor -&gt; extension manager -&gt; &#123;'enabled':true&#125;. 保存</span><br></pre></td></tr></table></figure>
+
+<p>2 常用插件。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">github, toc, LaTeX, HTML, plotly, bokeh, matplotlib, drawio, sql, variableinspector, dash, gather, go to Definition, lsp, spreadsheet,</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<h4 id="Conda"><a href="#Conda" class="headerlink" title="Conda"></a>Conda</h4><p>后续在使用Anaconda过程中，进行相关的操作，都要通过conda命令进行。在Anaconda Prompt中进行命令行编辑。</p>
+<p><code>Conda相关的命令--</code></p>
+<p>conda list –</p>
+<p>conda install ** –</p>
+<p>conda uninstall ** –</p>
+<p>conda update ** –</p>
+<p>conda config –show-sources</p>
+<p>conda config –add channels </p>
+<p>有时候需要将默认安装的conda进行更新，conda update -n base conda.</p>
+<p>然后再将所有的进行更新，conda upgrade –all</p>
+<p>conda info –env , 查看python环境</p>
+<p>在<code>Anaconda Prompt</code>终端中安装第三方包时候，首选conda安装，在对应的包的使用教程中，找到conda安装的命令行。假如，某种包没有conda安装或者是conda无法安装成功，那么可以选择pip安装，同样需要找到对应的pip安装命令行。在安装过程中，可以关注一下这个包安装时候的选择的channel是哪一个。</p>
+<hr>
+<p>channels的设置–将包管理镜像为国内源。(直接搜索清华镜像)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span><br><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free</span><br><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</span><br><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/pro</span><br><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2</span><br><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge</span><br><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2</span><br><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch</span><br><span class="line">conda config --add channels conda-forge</span><br><span class="line"><span class="comment"># conda config --add channels http://mirrors.ustc.edu.cn/anaconda/cloud/pytorch</span></span><br><span class="line"></span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="Jupyter-Notebook"><a href="#Jupyter-Notebook" class="headerlink" title="Jupyter Notebook"></a>Jupyter Notebook</h3><p>在后续使用过程中，主要是通过Jupyter Notebook进行的学习，以及相关文档的编辑，保存。所以，需要着重对jupyter notebook的使用进行总结，整理出自己熟悉的一套配置，操作流程和环境搭建。</p>
+<h4 id="Notebook配置总结"><a href="#Notebook配置总结" class="headerlink" title="Notebook配置总结"></a>Notebook配置总结</h4><p>在prompt终端中，输入如下的命令：jupyter notebook –generate-config</p>
+<p>会显示出jupyter_notebook_config.py的地址路径。使用编辑器打开这个文件，将c.NotebookApp.notebook_dir修改为：</p>
+<p>c.NotebookApp.notebook_dir=“E:\SynologyDrive\Jupyter notebook”</p>
+<h4 id="Nbextensions插件"><a href="#Nbextensions插件" class="headerlink" title="Nbextensions插件"></a>Nbextensions插件</h4><p>安装nbextensions插件：<a href="https://www.jianshu.com/p/7687c6bec65e" target="_blank" rel="noopener">教程链接</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install jupyter_contrib_nbextensions</span><br><span class="line">jupyter contrib nbextension install --user --skip-running-check</span><br></pre></td></tr></table></figure>
+
+<p>也可以选择从conda中安装：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda install -c conda-forge jupyter_contrib_nbextensions</span><br><span class="line">conda install -c conda-forge jupyter_nbextensions_configurator</span><br></pre></td></tr></table></figure>
+
+<p>插件的具体作用：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Table of Contens: 更容易导航，添加了TOC链接，定位目录。</span><br><span class="line">Autopep8: 获得简洁代码。需要单独安装：conda install autopep8</span><br><span class="line">variable inspector: 跟踪工作空间。</span><br><span class="line">ExecuteTime: 显示单元格的运行时间和耗时。</span><br><span class="line">Hinterland: 代码自动补全。</span><br><span class="line">Snippets Menu: 可以插入代码片段，样板文件和示例。</span><br><span class="line">Codefolding: 代码折叠功能。</span><br><span class="line">Hide Input All: 隐藏所有的代码单元，保持输出和markdown可见。</span><br><span class="line">highlighter: 可以标记高亮重点部分。</span><br><span class="line">LiveMarkdown Preview: markdown实时编译显示。</span><br><span class="line">Collapsible Headings: 可以隐藏可折叠部分，以标题分开。</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="相关命令汇总"><a href="#相关命令汇总" class="headerlink" title="相关命令汇总"></a>相关命令汇总</h4><p>jupyter kernelspec list, 查看notebook中的kernel</p>
+<h4 id="Notebook代码中常用设置"><a href="#Notebook代码中常用设置" class="headerlink" title="Notebook代码中常用设置"></a>Notebook代码中常用设置</h4><p>matplotlib画图时候的设置:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import matplotlib</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">%matplotlib inline</span><br><span class="line">%config InlineBackend.figure_format &#x3D; &#39;retina&#39;</span><br><span class="line"></span><br><span class="line">plt.savefig(&#39;tmp.pdf&#39;,bbox_inches&#x3D;&#39;tight&#39;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<h3 id="机器学习框架配置"><a href="#机器学习框架配置" class="headerlink" title="机器学习框架配置"></a>机器学习框架配置</h3><p>目前，在机器学习和深度学习框架中，主要学习PyTorch。</p>
+<hr>
+<h4 id="PyTorch"><a href="#PyTorch" class="headerlink" title="PyTorch"></a>PyTorch</h4><p>在使用PyTorch时候，选择GPU版本的进行配置安装。<a href="https://blog.csdn.net/qq_28413435/article/details/83338551" target="_blank" rel="noopener">配置教程</a></p>
+<p>第一步，根据电脑中的GPU型号，选择安装合适的CUDA驱动。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">本台笔记本电脑的显示适配器：NVIDIA GeForce 940M</span><br><span class="line">此驱动程序版本为：441.66； 全部可用的图形内存：5840MB；CUDA核心：384；本台电脑只有1个GPU可用。</span><br><span class="line">1 安装CUDA Toolkit，在本台笔记本电脑中，下载安装的型号为：cuda_10.2.89_441.22_windows.exe。运行之后，选择自定义安装，选择安装组件CUDA，默认地址目录安装。安装完成之后，在cmd命令行中测试安装是否成功，nvcc -V</span><br><span class="line">2 下载cuDNN文件，选择版本cuDNN v7.6.5, for CUDA 10.2, cuDNN Library for windows 7.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">台式机电脑的显示适配器：NVIDIA GeForce RTX 2070 super</span><br><span class="line">此驱动程序版本为：441.66；全部可用的图形内存：16339MB；CUDA核心：2560；本台电脑只有1个GPU可用。</span><br><span class="line">1 安装CUDA Toolkit，在本台笔记本电脑中，下载安装的型号为：cuda_10.2.89_441.22_win10.exe.</span><br><span class="line">2 下载cuDNN文件，选择版本cuDNN v7.6.5, for CUDA 10.2, cuDNN Library for windows 10.</span><br></pre></td></tr></table></figure>
+
+<p>第二步，在anaconda navigator中新建安装一个pytorch_gpu环境，并且安装常用的一些库。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 在navigator中安装一个新环境pytorch_gpu</span><br><span class="line">2 在终端中进入pytorch_gpu环境, activate pytorch_gpu</span><br><span class="line">3 安装一些常用的库，比如conda，jupyter等相关的库。</span><br></pre></td></tr></table></figure>
+
+<p>第三步，选择合适的PyTorch版本进行安装，在PyTorch官网中进行查询。根据情况，可以选择conda安装，或者pip安装。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">笔记本电脑：</span><br><span class="line">下载安装PyTorch。在PyTorch官网上选择相应的安装版本。本次安装的版本为： conda install pytorch torchvision -c pytorch</span><br><span class="line">此处的-c pytorch是说明使用的是pytorch的源。</span><br><span class="line">在国内安装时候，要将-c pytorch去掉。此时就是使用的是国内的镜像源。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">台式机电脑：</span><br><span class="line">下载安装PyTorch。在PyTorch官网上选择相应的安装版本。本次安装的版本为： conda install pytorch torchvision cudatoolkit&#x3D;10.1 -c pytorch 。 </span><br><span class="line">有时候使用conda安装速度非常慢，此时可以选择pip安装方式。</span><br><span class="line">此处的-c pytorch是说明使用的是pytorch的源。</span><br><span class="line">在国内安装时候，要将-c pytorch去掉。此时就是使用的是国内的镜像源。</span><br></pre></td></tr></table></figure>
+
+<p>第四步，验证pytorch是否安装成功。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import torch</span><br></pre></td></tr></table></figure>
+
+<p>若结果返回为True，则说明安装成功了。</p>
+<p>第五步，配置此环境下的jupyter notebook。</p>
+<p>在notebook中添加一个ikernel。在pytorch_gpu环境中，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda install ipykernel</span><br><span class="line">python -m ipykernel install --name pytorch #(这里的pytorch是核心名字，可以随便取)</span><br></pre></td></tr></table></figure>
+
+<p>在Notebook中安装插件等。</p>
+<p>第六步，退出pytorch_gpu环境。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在终端中输入，conda deactivate</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Tensorflow"><a href="#Tensorflow" class="headerlink" title="Tensorflow"></a>Tensorflow</h4><p>在台式机上安装GPU版本的TensorFlow。由于已经安装过CUDA的相关内容，这一次不再安装这个。</p>
+<p>第二步，在anaconda navigator中新建安装一个tensorflow_gpu环境，并且安装常用的一些库。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 在navigator中安装一个新环境tensorflow_gpu</span><br><span class="line">2 在终端中进入tensorflow_gpu环境, activate tensorflow_gpu</span><br><span class="line">3 安装一些常用的库，比如conda，jupyter等相关的库。</span><br></pre></td></tr></table></figure>
+
+<p>第三步，选择合适的TensorFlow版本进行安装，在TensorFlow官网中进行查询。根据情况，可以选择conda安装，或者pip安装。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">台式机电脑：</span><br><span class="line">下载安装TensorFlow。在TensorFlow官网上选择相应的安装版本。本次安装的版本为： conda install -c anaconda tensorflow-gpu 。 </span><br><span class="line">有时候使用conda安装速度非常慢，此时可以选择pip安装方式。</span><br></pre></td></tr></table></figure>
+
+<p>第四步，验证tensorflow是否安装成功。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">print(tf.config.list_physical_devices(&#39;GPU&#39;))</span><br><span class="line">a &#x3D; tf.constant(2.0)</span><br><span class="line">b &#x3D; tf.constant(4.0)</span><br><span class="line">print(a+b)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>第五步，配置此环境下的jupyter notebook。</p>
+<p>在notebook中添加一个ikernel。在pytorch_gpu环境中，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda install ipykernel</span><br><span class="line">python -m ipykernel install --name tensorflow #(这里的tensorflow是核心名字，可以随便取)</span><br></pre></td></tr></table></figure>
+
+<p>在Notebook中安装插件等。</p>
+<p>第六步，退出tensorflow_gpu环境。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在终端中输入，conda deactivate</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h3><p>在python jupyter notebook环境中，自己编写的一些函数文件，整理成包等，需要进行的正确操作。</p>
+<p>新建一个文件夹”test”为包名称，首先需要在里面新建一个名字为” _ init _ .py”​的文件，此为包文件的标志。</p>
+<p>然后，在文件夹里面放入不同的定义好的函数文件，文件名为fun.name，里面的函数可以设置放置多个函数。</p>
+<p>一般都是将此test包文件夹和目标.py文件放在一个路径下，那么在调用时候，需要的过程是：</p>
+<p>可以直接import.test将整个包导入。或者是from test import add_fun</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Deep Convolutional GANs with PyTorch</title>
+    <url>/2020/cka0u3h7m0008awgxhyr24fg9/</url>
+    <content><![CDATA[<p>参考资料：</p>
+<p><a href="https://iq.opengenus.org/deep-convolutional-gans-pytorch/" target="_blank" rel="noopener">Understanding DCGANs with a PyTorch implementation</a></p>
+<p>本文档的主要内容，学习Deep Convolutional GANs (DCGANs)的内容，并且在PyTorch框架下进行调试。最终，将此技术应用到图像处理中，即image completion，应用到实验过程的图形处理中。</p>
+<a id="more"></a>
+
+
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>科研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Deep learning Overview</title>
+    <url>/2020/cka0u3h7e0002awgx2b7g2ekv/</url>
+    <content><![CDATA[<h2 id="Deep-Learning-Overview"><a href="#Deep-Learning-Overview" class="headerlink" title="Deep Learning Overview"></a><center>Deep Learning Overview</center></h2><p>深度学习(Deep Learning)，是一种学习算法(Learning Algorithm)，亦是人工智能(Artificial Intelligence)领域的一个重要分支。经过快速发展，深度学习渐渐形成了一种从训练数据出发，经过一个端到端(end-to-end)的模型，然后直接输出得到最终结果的一种新模式。</p>
+<a id="more"></a>
+
+<h3 id="一-概述"><a href="#一-概述" class="headerlink" title="一. 概述"></a>一. 概述</h3><p>图灵测试，是图灵在1950年的论文中提出的设想，即，隔墙对话，你将不知道与你谈话的是人还是电脑，这个给计算机，尤其是人工智能(Artificial Intelligence,AI)预设了一个很高的期望值。</p>
+<p>但是直到2006年以来，机器学习领域取得的突破性进展，让人们意识到图灵试验，至少不是那么可望而不可及了。至于技术手段，不仅仅依赖于云计算对大数据的并行处理能力，而且依赖于算法，这个算法就是Deep Learning。借助于Deep Learning算法，人类终于找到了如何处理==”抽象概念”==这个难题。</p>
+<p>2012年6月，《纽约时报》披露了Google Brain项目，由著名的斯坦福大学的机器学习教授Andrew Ng和在大规模计算机系统方面的世界顶尖专家Jeff Dean共同主导，用16000个CPU Core的并行计算平台训练一种称为“深度神经网络”(DNN, Deep Neutral Networks)的机器学习模型(内部共有10亿个节点)，在语音识别和图像识别等领域获得了巨大的成功。</p>
+<p>项目负责人之一Andrew称：“我们没有像通常那样自己框定边界，而是直接把海量数据投放到算法中，让数据自己说话，系统会自动从数据中学习。”另一名负责人Jeff说：“我们在训练的时候从来不会告诉机器说：‘这是一只猫。’系统其实是自己发明或者领悟了‘猫’的概念。”</p>
+<h3 id="二-背景"><a href="#二-背景" class="headerlink" title="二. 背景"></a>二. 背景</h3><p>机器学习(Machine Learning)是一种专门研究计算机怎样模拟或实现人类的学习行为，以获得新的知识或技能，重新组织已有的知识结构使之不断改善自身的性能的学科。机器能否向人类一样具有学习能力呢？1959年美国的Samuel设计了一个下棋的程序，这个程序具有学习能力，可以在不断的对弈中改善自己的棋艺。</p>
+<p>机器学习在发展过程中，还存在很多没有良好解决的问题：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/2_background_issues_001.png" style="zoom:40%">
+</div>
+
+
+
+<p>如图像识别、语音识别、自然语言理解、天气预测、基因表达、内容推荐等。目前我们通过机器学习去解决这些问题的思路都是这样的(以视觉感知为例):</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[Low-level sensing] --&gt;B[Pre-processing]</span><br><span class="line">B[Pre-processing] --&gt;C[Feature extract]</span><br><span class="line">C[Feature extract] --&gt;D[Feature selection]</span><br><span class="line">D[Feature selection] --&gt;E[Inference,prediction,recognition]</span><br></pre></td></tr></table></figure>
+
+<p>从开始的通过传感器获得数据，然后经过预处理、特征提取、特征选择，再到推理、预测或者识别。最后一个部分是机器学习的部分。中间的三个部分，概括起来就是特征表达。良好特征表达，对最终算法的准确性起了非常关键的作用，而且系统主要的计算和测试工作都耗在了这一部分。目前这一部分都是人工完成的，靠人工提取特征。即：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[Input] --&gt;B[Feature Representation,SIFT&#x2F;HoG.]</span><br><span class="line">B[Feature Representation,SIFT&#x2F;HoG.] --&gt;C[Learning Algorithm]</span><br></pre></td></tr></table></figure>
+
+<p>其中，好的特性具有不变性(大小、尺度和旋转等)和可区分性。例如，Sift的出现，对尺度、旋转以及一定视角和光照变化等图像变化都具有不变性，且具有很强的可区分性，是局部图像特征描述子研究领域一项里程碑式的工作。</p>
+<p>在这个工作中，手工选取特征是一件非常费力、启发式的方法，同时手工选取特征不太好，那么能不能自动地学习一些特征呢？答案是能！Deep Learning就是用来解决这个问题的，即进行Unsupervised Feature Learning，不要人参与的特征选取过程。</p>
+<h3 id="三-人脑视觉机理"><a href="#三-人脑视觉机理" class="headerlink" title="三. 人脑视觉机理"></a>三. 人脑视觉机理</h3><p>1981年的诺贝尔医学奖，颁发给了David Hubel和Torsten Wiesel, 以及Roger Sperry。前两位的主要贡献，是“发现了视觉系统的信息处理”：可视皮层是分级的，即人的视觉系统的信息处理是分级的。神经-中枢-大脑的工作过程，或许是一个不断迭代，不断抽象的过程。从原始信号，做低级抽象，逐渐向高级抽象迭代，人类的逻辑思维，经常使用高度抽象的概念。</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/3_brainvision_001.png" style="zoom:40%">
+</div>
+
+<p>从低级的V1区提取边缘特征，再到V2区的形状或者目标的部分等，再到更高层，整个目标、目标的行为等。高层的特征是低层特征的组合，从低层到高层的特征表示越来越抽象，越来越能表现语义或者意图。这里面有个关键词：==分层==。</p>
+<p>而Deep Learning的deep就是表示存在多少层。同时学习的是特征的表达，所以关于特征或者这个层级特征，需要进行深入的了解。</p>
+<h3 id="四-关于特征"><a href="#四-关于特征" class="headerlink" title="四. 关于特征"></a>四. 关于特征</h3><p>特征是机器学习系统的原材料，如果数据被很好的表达成了特征，通常线性模型就能达到满意的精度。</p>
+<h4 id="4-1-特征表示的粒度"><a href="#4-1-特征表示的粒度" class="headerlink" title="4.1. 特征表示的粒度"></a>4.1. 特征表示的粒度</h4><p>学习算法在一个什么粒度上的特征表示，才能发挥作用？对于一个图片，像素级的特征根本没有价值，比如区分一张图片是什么的时候。如果一个特征是一个具有结构性(或者说含义)的时候，就很容易区分出图片中的内容，学习算法才能发挥作用。</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/4_features_01_001.png" style="zoom:40%">
+</div>
+
+
+
+<h4 id="4-2-初级-浅层-特征表示"><a href="#4-2-初级-浅层-特征表示" class="headerlink" title="4.2. 初级(浅层)特征表示"></a>4.2. 初级(浅层)特征表示</h4><p>既然像素级的特征表示方法没有作用，那怎么样的表示才有用呢？</p>
+<p>稀疏编码(sparse coding)，是一个重复迭代的过程，每次迭代分为两步，经过几次迭代后，选出最佳的组合解，而这个组合解基本上都是图片上不同物体上的边缘线。</p>
+<p>复杂的图形，往往是由一些基本结构组成。声音也是这样，可以由基本的结构合成。</p>
+<h4 id="4-3-结构性特征表示"><a href="#4-3-结构性特征表示" class="headerlink" title="4.3. 结构性特征表示"></a>4.3. 结构性特征表示</h4><p>小块的图形可以由基本的edge构成，更结构化、更复杂的、具有概念性的图形是如何表示呢？这就需要更高层次的特征表示比如V2，V4。</p>
+<p>因此，V1看像素级是像素级，V2看V1是像素级，这个是层次递进的，高层表达由低层表达的组合而成，即基basis。V1层得到的basis是边缘，然后V2层是V1层这些basis的组合，这时候V2层得到的又是高一层的basis。直观上说，就是找到make sense的小patch再将其进行combine，就得到了上一层的feature，递归地向上learning feature。</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/4_features_03_001.png" style="zoom:40%">
+</div>
+
+
+
+<h4 id="4-4-需要有多少个特征？"><a href="#4-4-需要有多少个特征？" class="headerlink" title="4.4. 需要有多少个特征？"></a>4.4. 需要有多少个特征？</h4><p>我们需要层次的特征构建，由浅入深，但是每一层该有多少个特征呢？</p>
+<p>任何一种方法，特征越多，给出的参考信息就越多，准确性就会得到提升。但是特征多意味着计算复杂，探索空间大，可以用来训练的数据在每个特征上就会稀疏，都会带来各种问题，并不一定特征越多越好。</p>
+<p>此时可以聊到了Deep Learning，deep learning需要多层来获得更抽象的特征表达。那么多少层才合适呢？用什么架构来建模呢？怎么进行非监督训练呢？</p>
+<h3 id="五-Deep-Learning的基本思想"><a href="#五-Deep-Learning的基本思想" class="headerlink" title="五. Deep Learning的基本思想"></a>五. Deep Learning的基本思想</h3><p>假如我们有一个系统S，它有n层(S1,S2,…Sn)，它的输入是I，输出是O，形象地表示为：<br>$$<br>I =&gt;S_1 =&gt;S_2=&gt; …… =&gt;S_n=&gt;O<br>$$<br>如果输出O等于输入I，即输入I经过这个系统变化之后没有任何信息损失(实际上信息是逐层丢失的)，设处理a信息得到b，再对b处理得到c，那么可以证明: a和c的互信息不会超过a和b的互信息。这表明信息处理不会增加信息，大部分处理会丢失信息。当然了，如果丢掉的是没用的信息，那么它保持了不变，这意味着输入I经过每一层Si都没有任何的信息损失，即在任何一层Si，它都是原有信息(输入I)的另一种表示。</p>
+<p>在Deep Learning中，我们需要自动地学习特征，假设我们有一堆输入I(一堆图像或文本)，假设我们设计了一个系统S(有n层)，通过调整系统中参数，使得它的输出仍然是输入I，那么我们就可以自动地获取到输入I的一系列层次特征，即S1，S2，…Sn。</p>
+<p>对于深度学习来说，其思想就是对堆叠多个层，也就是说这一层的输出作为下一层的输入，通过这种方式，就可以实现对输入信息进行分级表达了。同时在输出和输入之间的差别尽可能的小即可。</p>
+<h3 id="六-浅层学习和深度学习"><a href="#六-浅层学习和深度学习" class="headerlink" title="六. 浅层学习和深度学习"></a>六. 浅层学习和深度学习</h3><p><strong>浅层学习(Shallow Laerning)是机器学习的第一次浪潮</strong></p>
+<p>20世纪80年代末期，用于人工神经网络的==反向传播算法(Back Propagation,BP算法)==的发明，掀起了基于统计模型的机器学习热潮。人民发现，利用BP算法可以让一个人工神经网络模型从大量训练样本中学习统计规律，从而对未知事件做预测。这个时候的人工神经网络，虽然也被称为多层感知器(Mulit-layer Perceptron)，但实际上是只含有一层隐层节点的浅层模型。</p>
+<p>20世纪90年代，各种各样的浅层机器学习模型被提出来，例如支撑向量机(SVM,Support Vector Machines)，Boosting，最大熵方法(如LR, Logistic Regression)等。这些模型的结构基本上可以看成带有一层隐层节点(如SVM,Boosting)，或没有隐层节点(如LR)。</p>
+<p><strong>深度学习(Deep Learning)是机器学习的第二次浪潮</strong></p>
+<p>2006年，多伦多大学 Geoffery Hinton和他的学生Ruslan Salakhutdinov在《科学》上发表了文章，开启了深度学习在学术界和工业界的浪潮。该文章的两个主要观点：</p>
+<ul>
+<li>多隐层的人工神经网络具有优异的特征学习能力，学习得到的特征对数据有更本质的刻画，从而有利于可视化或分类。</li>
+<li>深度神经网络在训练上的难度，可以通过”逐层初始化”(layer-wise pre-training)来有效克服，在这篇文章中，逐层初始化是通过无监督学习实现的。</li>
+</ul>
+<p>当前多数分类、回归等学习方法为浅层结构算法，其局限性在于有限样本和计算单元情况下对复杂函数的表达能力有限。深度学习可通过学习一种深层非线性网络结构，实现复杂函数逼近。</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/6_deeplearning_comparision_001.png" style="zoom:40%">
+</div>
+
+<p>深度学习的实质，是通过构建具有很多隐层的机器学习模型和海量的训练数据，来学习更有用的特征，从而最终提升分类或预测的准确性。因此，”深度模型”是手段，”特征学习”是目的。</p>
+<p>区别于传统的浅层学习，深度学习的不同在于：</p>
+<ol>
+<li>强调了模型结构的深度，通常有5层、6层，甚至10多层的隐层节点。</li>
+<li>明确突出了特征学习的重要性，也就是说，通过逐层特征变换，将样本在原空间的特征表示变换到一个新特征空间，从而使分类或预测更加容易。</li>
+<li>利用大数据学习特征，能够刻画数据的丰富内在信息。</li>
+</ol>
+<h3 id="七-Deep-Learning-与Neutral-Network"><a href="#七-Deep-Learning-与Neutral-Network" class="headerlink" title="七. Deep Learning 与Neutral Network"></a>七. Deep Learning 与Neutral Network</h3><div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/7_deeplearning_introduction_001.png" style="zoom:40%">
+</div>
+
+<p>深度学习是机器学习研究中的一个新的领域，其动机在于建立、模拟人脑进行分析学习的神经网络，它模仿人脑的机制来解释数据。深度学习是无监督学习的一种。</p>
+<p>深度学习的概念源于人工神经网络的研究，含有多隐层的多层感知器就是一种深度学习结构。深度学习通过组合低层特征形成更加抽象的高层表示属性类别或者特征，以发现数据的分布式特征表示。</p>
+<p>Deep learning与传统的神经网络之间的相同地方和不同的地方。</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/7_deeplearning_introduction_002.png" style="zoom:40%"
+</div>
+
+<p>二者的相同在与deep learning采用了神经网络相似的分层结构，系统由包括输入层、隐层(多层)、输出层组成的多层网络，只有相邻节点之间有连接，同一层以及跨层节点之间相互无连接，每一层可以看做是一个logistic regression模型，这种分层结构，是比较接近人类大脑的结构的。</p>
+<p>不同的是，为了克服神经网络训练中的问题，DL采用了与神经网络很不同的训练机制。传统的神经网络中，采用的是back propagation的方式进行的，简单来讲就是采用迭代的算法来训练整个网络，随机设定初值，计算当前网络的输出，然后根据当前输出和label之间的差来改变前面各层的参数，直到收敛(整体是一个梯度下降法)。而DL整体上是一个layer-wise的训练机制。</p>
+<h3 id="八-Deep-Laerning训练过程"><a href="#八-Deep-Laerning训练过程" class="headerlink" title="八. Deep Laerning训练过程"></a>八. Deep Laerning训练过程</h3><h4 id="8-1-传统神经网络的训练方法为什么不能用在深度神经网络"><a href="#8-1-传统神经网络的训练方法为什么不能用在深度神经网络" class="headerlink" title="8.1. 传统神经网络的训练方法为什么不能用在深度神经网络"></a>8.1. 传统神经网络的训练方法为什么不能用在深度神经网络</h4><p>BP算法作为传统训练多层网络的典型算法，存在的问题：</p>
+<ul>
+<li>梯度越来越稀疏，从顶层越往下，误差校正信号越来越小</li>
+<li>收敛到局部最小值，尤其是从远离最优区域开始的时候(随机值初始化会导致这种情况发生)</li>
+<li>一般只能用有标签的数据来训练，是大部分的数据是没有标签的，而大脑可以从没有标签的数据中学习</li>
+</ul>
+<h4 id="8-2-deep-learning训练过程"><a href="#8-2-deep-learning训练过程" class="headerlink" title="8.2. deep learning训练过程"></a>8.2. deep learning训练过程</h4><p>2006年，Hilton提出了在非监督数据上建立多层神经网络的一个有效方法。简单的说，分为两步，一是每次训练一层网络，二是调优，使原始表示x向上生成的高级表示r和该高级表示r向下生成的x’尽可能一致。方法是：</p>
+<ul>
+<li>首先逐层构建单程神经元，这样每次都是训练一个单层网络</li>
+<li>当所有层训练完后，Hilton使用wake-sleep算法进行调优</li>
+</ul>
+<p>将除最顶层的其他层间的权重变成双向的，这样最顶层仍然是一个单层神经网络，而其他层则变成了图模型。向上的权重用于“认知”，向下的权重用于“生成”。然后使用wake-sleep算法调整所有的权重。让认知和生成达成一致，也就是保证生成的最顶层表示能够尽可能正确的复原底层的结点。</p>
+<p><strong>Wake阶段</strong>：认知过程，通过外界的特征和向上的权重（认知权重）产生每一层的抽象表示（结点状态），并且使用梯度下降修改层间的下行权重（生成权重）。也就是“如果现实跟我想象的不一样，改变我的权重使得我想象的东西就是这样的。”</p>
+<p><strong>Sleep阶段</strong> ：生成过程，通过顶层表示和向下权重，生成底层的状态，同时修改层间向上的权重。也就是“如果梦中的景象不是我脑中的相应概念，改变我的认知权重使得这种景象在我看来就是这个概念。”</p>
+<p><strong>deep learning训练过程具体如下</strong></p>
+<ul>
+<li>使用自下上升非监督学习（就是从底层开始，一层一层的往顶层训练）：</li>
+</ul>
+<p>采用无标定数据（有标定数据也可）分层训练各层参数，这一步可以看作是一个无监督训练过程，是和传统神经网络区别最大的部分（这个过程可以看作是feature learning过程）。</p>
+<p>具体的，先用无标定数据训练第一层，训练时先学习第一层的参数（这一层可以看作是得到一个使得输出和输入差别最小的三层神经网络的隐层），由于模型capacity的限制以及稀疏性约束，使得得到的模型能够学习到数据本身的结构，从而得到比输入更具有表示能力的特征；在学习得到第n-1层后，将n-1层的输出作为第n层的输入，训练第n层，由此分别得到各层的参数。</p>
+<ul>
+<li>自顶向下的监督学习（就是通过带标签的数据去训练，误差自顶向下传输，对网络进行微调）：</li>
+</ul>
+<p>基于第一步得到的各层参数进一步fine-tune整个多层模型的参数，这一步是一个有监督训练过程；第一步类似神经网络的随机初始化初值过程，由于DL的第一步不是随机初始化，而是通过学习输入数据的结构得到的，因而这个初值更接近全局最优，从而能够取得更好的效果；所以deep learning效果好很大程度上归功于第一步的feature learning过程。</p>
+<h3 id="九-Deep-Learning的常用模型和方法"><a href="#九-Deep-Learning的常用模型和方法" class="headerlink" title="九. Deep Learning的常用模型和方法"></a>九. Deep Learning的常用模型和方法</h3><h4 id="9-1-Auto-Encoder自动编码器"><a href="#9-1-Auto-Encoder自动编码器" class="headerlink" title="9.1. Auto Encoder自动编码器"></a>9.1. Auto Encoder自动编码器</h4><p><strong>Auto Encoder自动编码器</strong></p>
+<p>Deep Learning最简单的一种方法是利用人工神经网络的特点，如果给定一个神经网络，我们假设其输出和输入是相同的，然后训练调整其参数，得到每一层中的权重。自然地，我们就得到了输入I的几种不同的表示(每一层代表一种表示)，这些表示就是特征。</p>
+<p>自动编码器就是一种尽可能复现输入信号的神经网络。为了实现这种复现，自动编码器就必须捕捉可以代表输入数据的重要的因素，找到可以代表原信息的主要成分。</p>
+<p>具体过程简单如下：</p>
+<p><strong>1）给定无标签数据，用非监督学习学习特征</strong></p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/9_modal_1_autoencoder_001.png" style="zoom:40%"
+</div>
+
+<p>上图中，左边的图表示的是之前的神经网络，输入的样本是有标签的，即(input, target)，这样我们根据当前输出和target(label)之间的差去改变前面各层的参数，直到收敛。而在deeplearnign模型中，只有无标签数据，即上图的右边的表示，那么这个误差是怎么得到的呢？</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/9_modal_1_autoencoder_002.png" style="zoom:40%"
+</div>
+
+<p>如上图所示，我们将Input输入一个encoder编码器中，就会得到一个code，这个code也就是输入的一个表示。然后我们加一个decoder解码器，这时候decoder就会输出一个信息。如果输出的这个信息和一开始的输入信号Input很想的话，那很明显，我们有理由相信这个code是靠谱的。所以，我们就可以通过调整encoder和decoder的参数，使得重构误差最小，这时候我们就得到了输入input信号的第一个表示了，也就是编码code了。因为是无标签数据，所以误差的来源就是直接重构后与原输入相比得到。</p>
+<p><strong>2）通过编码器产生特征，然后训练下一层，这样逐层训练</strong></p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/9_modal_1_autoencoder_003.png" style="zoom:40%"
+</div>
+
+<p>第一层的code可以当做原输入信号的第一个表达，然后我们将第一层输出的code当成第二层的输入信号，同样进行最小化重构误差，就会得到第二层的参数，并且得到第二层输入的code,也就是原输入的第二个表达。其他层就同样的方法进行复制即可。（训练当前层时，前面层的参数都是固定的，并且他们的decoder已经没用了，都不需要了）。</p>
+<p><strong>3）有监督微调</strong></p>
+<p>经过上面的方法，我们就可以得到很多层了。每一层都会得到原始输入的不同的表达。当然了，我们觉得它是越抽象越好，就像人的视觉系统一样。</p>
+<p>到这里，AutoEncoder还不能来分类数据，因为它还没有学习如何去连结一个输入和一个类。它只是学会了如何去重构或者复现它的输入而已。或者说，它只是学习获得了一个可以良好代表输入的特征，这个特征可以最大程度上代表原输入信号。那么为了实现分类，我们就可以在AutoEncoder的最顶层的编码层添加一个分类器(例如罗杰斯特回归、SVM等)，然后通过标准的多层神经网络的监督训练方法(梯度下降法)去训练。</p>
+<p>也就是说，这时候，我们需要将最后层的特征code输入到最后的分类器，通过有标签样本，通过监督学习进行微调，这也分为两种，一种是只调整分类器(黑色部分)：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/9_modal_1_autoencoder_004.png" style="zoom:40%"
+</div>
+
+
+<p>另一种是通过有标签样本，微调整个系统：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/9_modal_1_autoencoder_005.png" style="zoom:40%"
+</div>
+
+<p>一旦监督训练完成，整个网络就可以用来分类了。神经网络的最顶层可以作为一个线性分类器，然后我们可以用一个更好性能的分类器去取代它。</p>
+<p><strong>Sparse AutoEnCoder 稀疏自动编码器</strong></p>
+<p>如果我们在AutoEncoder的基础上加上L1的Regularity限制(L1主要是约束每一层中的节点中大部分都要为0，只有少数不为0，这就是Sparse名字的来源)，我们就可以得到Sparse AutoEncoder法。</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/9_modal_1_sparseautocoder_001.png" style="zoom:40%"
+</div>
+
+
+<p>如上图，就是限制每次得到的表达的code尽量稀疏，因为稀疏的表达往往比其他的表达要有效。</p>
+<p><strong>Denoising AutoEncoders降噪自动编码器</strong></p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/9_modal_1_denoisingautocoder_001.png" style="zoom:40%"
+</div>
+
+<p>降噪自动编码器是在自动编码器的基础上，训练数据加入噪声，所以自动编码器必须学习去除这种噪声而获得真正的没有被噪声污染过的输入。这就要迫使编码器去学习输入信号的更加鲁棒的表达，这也是它的泛化能力比一般编码器强的原因。降噪自动编码器可通过梯度下降算法去训练。</p>
+<h4 id="9-2-Sparse-Coding稀疏编码"><a href="#9-2-Sparse-Coding稀疏编码" class="headerlink" title="9.2. Sparse Coding稀疏编码"></a>9.2. Sparse Coding稀疏编码</h4><p>如果我们把输出必须和输入相等的限制放松，同时利用线性代数中基的概念，即$O=a_1<em>\phi_1+a_2<em>\phi_2+…+a_n</em>\phi_n$, $\phi_i$是基矢，$a_i$是系数，我们可以得到这样一个优化问题：<br>$$<br>Min|I-O|, 其中I表示输入，O表示输出<br>$$<br>通过求解这个最优化式子，我们可以求得系数$a_i$和基矢$\phi_i$，这些系数和基矢就是输入的另一种近似表达。<br>$$<br>x = \sum_{i=1}^k a_i\phi_i<br>$$<br>因此，它们可以用来表达输入I，这个过程也是自动学习得到的。如果我们在上述式子上加上L1的Regularity限制，可得到:<br>$$<br>Min|I-O| + u</em>(|a_1|+|a_2|+…+|a_n|)<br>$$<br>这种方法被称为Sparse Coding。就是将一个信号表示为一组基的线性组合，而且要求只需要较少的几个基就可以将信号表示出来。</p>
+<p>“稀疏性”定义为：只有很少的几个非零元素或者只有很少的几个远大于零的元素。要求系数$a_i$是稀疏的意思是：对于一组输入向量，我们只想有尽可能少的几个系数远大于零。选择使用具有稀疏性的分量来表示我们的输入数据是有原因的，因为绝大多数的感官数据，比如自然图像，可以被表示成少量基本元素的叠加，在图像中这些元素可以是面或者线。</p>
+<p>稀疏编码算法是一种无监督学习方法，它用来寻找一组”超完备”基向量来更高效地表示样本数据。<a href="http://deeplearning.stanford.edu/wiki/index.php/%E7%A8%80%E7%96%8F%E7%BC%96%E7%A0%81" target="_blank" rel="noopener">(详细过程请参考：UFLDL Tutorial稀疏编码)</a></p>
+<h4 id="9-3-Restricted-Boltzmann-Machine-RBM-限制玻尔兹曼机"><a href="#9-3-Restricted-Boltzmann-Machine-RBM-限制玻尔兹曼机" class="headerlink" title="9.3. Restricted Boltzmann Machine(RBM)限制玻尔兹曼机"></a>9.3. Restricted Boltzmann Machine(RBM)限制玻尔兹曼机</h4><p>假设有一个二部图，每一层的节点之间没有链接，一层是可视层，即输入数据层(v)，一层是隐藏层(h)，如果假设所有的节点都是随机二值变量节点(只能取0或者1值)，同时假设全概率分布$p(v,h)$满足Boltzmann分布，我们成这个模型为Restricted Boltzmann Machine。</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/9_modal_3_rbm_001.png" style="zoom:40%"
+</div>
+
+<p>首先，这个模型是二部图，所以在已知v的情况下，所有的隐藏节点之间是条件独立的(因为节点之间不存在连接)，即$p(h|v)=p(h_1|v)…p(h_n|v)$。同理，在已知隐藏层h的情况下，所有的可视节点都是条件独立的。<br>同时，又由于所有的v和h满足Boltzmann分布，因此，当输入v的时候，通过$p(h|v)$可以得到隐藏层h，而得到隐藏层h之后，通过$p(v|h)$又能得到可视层，通过调整参数，使得从隐藏层得到的可视层v1与原来的可视层v如果一样，那么得到的隐藏层就是可视层另外的一种表达，因此隐藏层可以作为可视层输入数据的特征。</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/9_modal_3_rbm_002.png" style="zoom:40%"
+</div>
+
+
+<p>如果我们将隐藏层的层数增加，我们就可以得到Deep Boltzmann Machine(DBM)。如果我们在靠近可视层的部分使用贝叶斯信念网络(即有向图模型)，而在最远离可视层的部分使用Restricted Boltzmann Machine，我们可以得到Deep Belief Net(DBN)。</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/9_modal_3_rbm_003.png" style="zoom:40%"
+</div>
+
+<h4 id="9-4-Deep-Belief-Networks深信度网络"><a href="#9-4-Deep-Belief-Networks深信度网络" class="headerlink" title="9.4. Deep Belief Networks深信度网络"></a>9.4. Deep Belief Networks深信度网络</h4><p>DBNs是一个概率生成模型，与传统的判别模型的神经网络相对，生成模型是建立一个观察数据和标签之间的联合分布，对$p(Observation|Label)$和$p(Label|Observation)$都做了评估，而判别模型仅仅评估了后者而已，也就是$p(Label|Observation)$。<br>对于在深度神经网络应用传统的BP算法的时候，DNBs遇到了以下的问题：</p>
+<ul>
+<li>需要为训练提供一个有标签的样本集</li>
+<li>学习过程较慢</li>
+<li>不适当的参数选择会导致学习收敛于局部最优解</li>
+</ul>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/9_modal_4_dbns_001.png" style="zoom:40%"
+</div>
+
+
+
+<p>DBNs由多个限制玻尔兹曼机层(RBM)组成，一个典型的神经网络类型如下图所示。</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/9_modal_4_dbns_002.png" style="zoom:40%"
+</div>
+
+
+
+<p>这些网络被“限制”为一个可视层和一个隐层，层间存在连接，但层内的单元间不存在连接，隐层单元被训练去捕捉在可视层变表现出来的高阶数据的相关性。</p>
+<h4 id="9-5-Convolutional-Neural-Networks卷积神经网络"><a href="#9-5-Convolutional-Neural-Networks卷积神经网络" class="headerlink" title="9.5. Convolutional Neural Networks卷积神经网络"></a>9.5. Convolutional Neural Networks卷积神经网络</h4><p>卷积神经网络是人工神经网络的一种，已成为当前语音分析和图像识别领域的研究热点。它的权值共享网络结构使之更类似于生物神经网络，降低了网络模型的复杂度，减少了权值的数量。卷积网络是为识别二维形状而特殊设计的一个多层感知器，这种网络结构对平移、比例缩放、倾斜或者共他形式的变形具有高度不变性。</p>
+<p>CNNs是第一个真正成功训练多层网络结构的学习算法。它利用空间关系减少需要学习的参数数目以提高一般前向BP算法的训练性能。在CNN中，图像的一小部分(局部感受区域)作为层级结构的最底层的输入，信息再依次传输到不同的层，每层通过一个数字滤波器去获得观测数据的最显著的特征。这个方法能够获取对平移、缩放和旋转不变的观测数据的显著特征，因为图像的局部感受区域允许神经元或者处理单元可以访问到最基础的特征，例如定向边缘或者角点。</p>
+<p><strong>1）卷积神经网络的历史</strong></p>
+<p>通常神经认知机包含两类神经元，即承担特征抽取的S-元和抗变形的C-元。S-元中涉及两个重要参数，即感受野与阈值参数，前者确定输入连接的数目，后者则控制对特征子模式的反应程度。</p>
+<p><strong>2）卷积神经网络的网络结构</strong></p>
+<p>卷积神经网络是一个多层的神经网络，每层由多个二维平面组成，而每个平面由多个独立神经元组成。</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/9_modal_5_cnn_001.png" style="zoom:40%"
+</div>
+
+<p>一般地，C层为特征提取层，每个神经元的输入与前一层的局部感受野相连，并提取该局部的特征，一旦该局部特征被提取后，它与其他特征间的位置关系也随之确定下来。S层是特征映射层，网络的每个计算层由多个特征映射组成，每个特征映射为一个平面，平面上所有神经元的权值相等。特征映射结构采用影响函数核小的sigmoid函数作为卷积网络的激活函数，使得特征映射具有唯一不变性。</p>
+<p>此外，由于一个映射面上的神经元共享权值，因而减少了网络自由参数的个数，降低了网络参数选择的复杂度。卷积神经网络中的每一个特征提取层C-层都紧跟着一个用来求局部平均与二次提取的计算层S-层，这种特有的两次特征提取结构使网络在识别时对输入样本有较高的畸变容忍能力。</p>
+<h3 id="十-总结与展望"><a href="#十-总结与展望" class="headerlink" title="十. 总结与展望"></a>十. 总结与展望</h3><h4 id="Deep-Learning总结"><a href="#Deep-Learning总结" class="headerlink" title="Deep Learning总结"></a>Deep Learning总结</h4><p>深度学习是关于自动学习要建模的数据的潜在(隐含)分布的多层(复杂)表达的算法。深度学习算法自动的提取分类需要的低层次或者高层次特征。高层次特征，是指该特征可以分级(层级)地依赖其他特征。</p>
+<p>Deep Learnign能够得到更好地表示数据的feature，同时由于建模的层次、参数很多，capacity足够，因此，建模有能力表示大规模数据。此外，从模式识别特征和分类器的角度，deep learning框架将feature和分类器结合在一个框架中，用数据去学习feature，在使用中减少了手工设计feature的巨大工作量，因此，不仅仅效果可以更好，而且使用起来也有很多方便之处。因此，是十分值得关注的一套框架，每个做ML的人都应该关注了解一下。</p>
+<p>当然，deep learning本身也不是完美的，也不是解决世间任何ML问题的利器，不应该被放大到一个无所不能的程度。</p>
+<h4 id="Deep-Learning未来"><a href="#Deep-Learning未来" class="headerlink" title="Deep Learning未来"></a>Deep Learning未来</h4><p>深度学习目前仍有大量工作需要研究。目前的关注点还是从机器学习的领域借鉴一些可以在深度学习使用的方法，特别是降维领域。</p>
+<p>探索新的特征提取模型是值得深入研究的内容。此外有效的可并行训练算法也是值得研究的一个方向。</p>
+<div style="page-break-after:always;"> </div>
+
+
+
+<h4 id="什么是机器学习？"><a href="#什么是机器学习？" class="headerlink" title="什么是机器学习？"></a>什么是机器学习？</h4><p>机器学习是一种概念：不需要写任何与问题有关的特定代码，泛型算法(Generic Algorithms)就能告诉你一些关于你数据的有趣结论。不用编码，将数据输入泛型算法当中，就会在数据的基础上建立出它自己的逻辑。</p>
+<h4 id="两类机器学习算法"><a href="#两类机器学习算法" class="headerlink" title="两类机器学习算法"></a>两类机器学习算法</h4><p>机器学习算法分为两大类：==监督式学习(supervised learning)==和==非监督式学习(unsupervised learning)==。</p>
+<h5 id="监督式学习"><a href="#监督式学习" class="headerlink" title="监督式学习"></a>监督式学习</h5><p>首先，有了训练数据。然后使用这些训练数据，来进行后面的预测计算。</p>
+<h5 id="非监督式学习"><a href="#非监督式学习" class="headerlink" title="非监督式学习"></a>非监督式学习</h5><h4 id="学习的定义"><a href="#学习的定义" class="headerlink" title="学习的定义"></a>学习的定义</h4><p>机器在少量样本数据的基础上找出一个公式来解决特定的问题。</p>
+<h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4><p><a href="https://www.stoodnt.com/blog/ann-neural-networks-deep-learning-machine-learning-artificial-intelligence-differences/" target="_blank" rel="noopener">Demystifying NN,DL,ML,and AI</a></p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Deep Learning 学习笔记</title>
+    <url>/2020/cka0u3h7j0006awgxeh5j75im/</url>
+    <content><![CDATA[<h4 id="第一部分–PPT的学习"><a href="#第一部分–PPT的学习" class="headerlink" title="第一部分–PPT的学习"></a>第一部分–PPT的学习</h4><p><strong>《Learning Deep Architectures _ Bengio _ 2009》</strong></p>
+<p>这个PPT是Bengio对其经典论文“Learning Deep Architectures for AI” 的内容描述。</p>
+<a id="more"></a>
+
+<p>在deep learning之前，与之有关系的有两种：</p>
+<ul>
+<li>shallow learning, 典型例子是SVM, 可以看做是有一个隐含层的神经网络。而deep learning是有多个隐含层。</li>
+<li>deep neural network, 也是包含着多个隐含层的神经呢网络，不过使用的是典型的BP算法进行训练。而deep learning是引入了pre-training，提升了训练效果。</li>
+</ul>
+<p>deep learning在2006年取得突破，有三篇经典论文:</p>
+<ol>
+<li>Hinton, Osindero &amp; Teh, A Fast Learning Algorithm for Deep Belief Nets, Neural Computation, 2006. </li>
+<li>Bengio, Lamblin, Popovici, Larochelle, Greedy Layer-Wise Training of Deep Networks, NIPS, 2006. </li>
+<li>Ranzato, Poultney, Chopra, LeCun, Efficient Learning of Sparse Representations with an Energy-Based Model, NIPS, 2006.</li>
+</ol>
+<p>deep learning的 pre-training是用RBM(stacking restricted boltzman machines)做的。</p>
+<p><strong>《Tutorial on Deep Learning and Applications _ Honglak _ Bengio _ 2010》</strong></p>
+<p>此PPT是在“NIPS 2010 Workshop on Deep Learning and Unsupervised Feature Learning”上的报告。从内容上看，是与上述的《Learning Deep Architectures _ Bengio _ 2009》PPT重复，不过思路更加清晰。</p>
+<p><strong>《Machine Learning and AI via Brain simulations _ Andrew Ng _ 2013》</strong></p>
+<p>这是Andrew Ng在清华做的一篇PPT报告。</p>
+<p><strong>《Advanced topics + Research philosophy _ Andrew Ng _ 2013》</strong></p>
+<p>和上一篇是一起的。</p>
+<p><strong>《A Tutorial on Deep Learning _ KaiYu _ 2013》</strong></p>
+<p><strong>《Tutorial on Deep Belief Nets _ Hinton _ 2007 _ NIPS》</strong></p>
+<p>这是在2007年NIPS上的一个报告，当时DP刚刚起步。</p>
+<h4 id="第二部分-–-Deep-Learning的基本内容学习"><a href="#第二部分-–-Deep-Learning的基本内容学习" class="headerlink" title="第二部分 – Deep Learning的基本内容学习"></a>第二部分 – Deep Learning的基本内容学习</h4><p>通常所说的深度学习是属于机器学习的一部分，包含关系如下：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/2_dl_introduction_001.png" style="zoom:40%">
+</div>
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/2_dl_introduction_mldl_001.png" style="zoom:40%">
+</div>
+
+
+
+<p>深度学习是机器学习中一种基于对数据进行表征学习的方法，深度学习的好处是用非监督式或半监督式的特征学习、分层特征提取高效算法来替代手工获取特征。</p>
+<p>而在深度学习中经常提到的神经网络，是从大脑中的神经元借鉴过来的：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/2_dl_introduction_neural_network_001.png" style="zoom:40%">
+</div>
+
+
+
+<p>所以，深度学习就是基于多层神经网络的，海量数据为输入的，规则自学习方法。</p>
+<ul>
+<li>特征1，多层神经网络，可以更深入的表示特征</li>
+<li>特征2，海量数据输入，更强的函数模拟能力是由于随着层数的增加，整个网路的参数就越多，海量的参数训练就需要海量的数据</li>
+<li>特征3，规则自学习，数据驱动的“表示学习”范式，由数据自提取特征，计算机自己发现规则，进行学习。</li>
+</ul>
+<p>而深度学习的典型模型有：</p>
+<ul>
+<li>CNN (Convolutional Neural Networks)</li>
+<li>RNN (Recurrent Neural Networks)</li>
+<li>DRL (Deep Reinforcement Learning)</li>
+<li>GAN (Generative Adversarial Nets)</li>
+</ul>
+<p><strong>Neural Network: A Neuron</strong></p>
+<p>A neuron is a computational unit in the neural network that exchanges messages with each other.</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/2_dl_introduction_a_neural_001.png" style="zoom:40%">
+</div>
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/2_dl_introduction_a_neural_002.png" style="zoom:40%">
+</div>
+
+
+
+<p><strong>Feed forward/Backpropagation Neural Network</strong></p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/2_dl_introduction_feed_forward_001.png" style="zoom:40%">
+</div>
+
+
+
+<p>Feed forward algorithm: activate the neurons from the bottom to the top</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/DL/2_dl_introduction_back_propagation_001.png" style="zoom:40%">
+</div>
+
+<p>Back-propagation: randomly initialize the parameters; calculate total error at the top $f_6(e)$; then calculate contributions to error $\delta_n$, at each step going backwards.</p>
+<h4 id="第五部分–深度学习开源框架"><a href="#第五部分–深度学习开源框架" class="headerlink" title="第五部分–深度学习开源框架"></a>第五部分–深度学习开源框架</h4><table>
+<thead>
+<tr>
+<th align="center">框架</th>
+<th align="center">机构</th>
+<th align="center">支持语言</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">TensorFlow</td>
+<td align="center">Google</td>
+<td align="center">Python/C++/Go/…</td>
+</tr>
+<tr>
+<td align="center">Caffe</td>
+<td align="center">BVLC</td>
+<td align="center">C++/Python</td>
+</tr>
+<tr>
+<td align="center">Keras</td>
+<td align="center">fchollet</td>
+<td align="center">Python</td>
+</tr>
+<tr>
+<td align="center">CNTK</td>
+<td align="center">Microsoft</td>
+<td align="center">C++</td>
+</tr>
+<tr>
+<td align="center">MXNet</td>
+<td align="center">DMLC</td>
+<td align="center">Python/C++/R/…</td>
+</tr>
+<tr>
+<td align="center">Torch7</td>
+<td align="center">Facebook</td>
+<td align="center">Lua</td>
+</tr>
+<tr>
+<td align="center">Theano</td>
+<td align="center">U.Montreal</td>
+<td align="center">Python</td>
+</tr>
+<tr>
+<td align="center">Deeplearning4J</td>
+<td align="center">DeepLearning4J</td>
+<td align="center">Java/Scala</td>
+</tr>
+<tr>
+<td align="center">Leaf</td>
+<td align="center">AutumnAI</td>
+<td align="center">Rust</td>
+</tr>
+<tr>
+<td align="center">Lasagne</td>
+<td align="center">Lasagne</td>
+<td align="center">Python</td>
+</tr>
+<tr>
+<td align="center">Neon</td>
+<td align="center">NervanaSystems</td>
+<td align="center">Python</td>
+</tr>
+</tbody></table>
+<p>对于今后的运用的话，可以重点学习：Scikit-kearn(主要是在机器学习中)，TensorFlow和Keras(用于深度学习中)。</p>
+<h5 id="TensorFlow"><a href="#TensorFlow" class="headerlink" title="TensorFlow"></a>TensorFlow</h5><p>官方网址：<br>GitHub:</p>
+<p>TensorFlow是一款开源的数学计算软件，使用数据流图(Data Flow Graph)的形式进行计算。图中的节点代表数学运算，而图中的线条表示多维数据数组(tensor)之间的交互。</p>
+<p>Data Flow Graph: 使用有向图的节点和边共同描述数学计算。节点nodes代表数学操作，也可以表示数据输入输出的端点，边表示节点之间的关系，传递操作之间互相使用的多维数组(tensors)。一旦节点相连的边传来了数据流，节点就被分配到计算设备上异步的(节点间)、并行的(节点内)执行。TensorBoard用来显示TensorFlow计算的图形。</p>
+<p>TensorFlow是相对高阶的机器学习库，用户可以方便地用它设计神经网络结构，而不必为了追求高效率的实现亲自写C++或CUDA代码。并且，除了核心代码的C++接口，TensorFlow还有官方的Python接口，通过SWIG (Simplified Wrapper and Interface Generator) 实现的。</p>
+<p>TensorFlow也有内置的TF.Learn和TF.Slim等上层组件可以帮助快速地设计新网络，并且兼容Scikit-Learn Estimator接口，可以方便的实现evaluate, grid search, cross validation等功能。</p>
+<p>TensorFlow的另一个重要特点就是它的灵活的移植性。并且可以充分利用硬件资源，TensorFlow可以将graph的不同计算单元分配到不同设备执行，使用TensorFlow处理副本。</p>
+<p>除了支持常见的网络结构 (卷积神经网络CNN，循环神经网络RNN) 外，TensorFlow还支持深度强化学习乃至其他计算密集的科学计算 (如偏微分方程求解等)。</p>
+<h5 id="Caffe"><a href="#Caffe" class="headerlink" title="Caffe"></a>Caffe</h5><p>官方网址：<br>GitHub：</p>
+<p>Caffe全称为Convolutional Architecture for Fast Feature Embedding, 是一个被广泛使用的，清晰而高效的开源深度学习框架。由加州大学伯克利的PHD贾扬清开发，目前由伯克利视觉学中心(Berkeley Vision and Learning Center, BVLC)进行维护。Caffe的主要优势包括：</p>
+<ul>
+<li>容易上手，网络结构都是以配置文件形式定义，不需要用代码设计网络。</li>
+<li>训练速度快，能够训练state-of-the-art的模型与大规模的数据。</li>
+<li>组件模块化，可以方便地拓展到新的模型和学习任务上。</li>
+</ul>
+<p>Caffe基本流程：Caffe遵循了神经网络的一个简单假设–所有的计算都是以layer的形式表示的，layer做的事情就是获取一些数据，然后输出一些计算以后的结果。</p>
+<p>所以，Caffe的核心概念是Layer，每一个神经网络的模块都是一个Layer。Layer接收输入数据，同时经过内部计算产生输出数据，每一个Layer需要定义两种运算，一种是正向(forward)运算，一种是反向(backward)运算。</p>
+<p>Caffe的一大优势是拥有大量训练好的经典模型(AlexNet, VGG, Inception)乃至其他state-of-the-art(ResNet)的模型，收藏在它的Model Zoo中。同时Caffe也提供了Python语言接口pycaffe。</p>
+<p>Caffe的优势：上手快，速度快，模块化，开放性，社区好(可通过BSD-2参与开发和讨论)。</p>
+<h5 id="Keras"><a href="#Keras" class="headerlink" title="Keras"></a>Keras</h5><p>官方网址：<br>GitHub：</p>
+<p>Keras是一个崇尚极简、高度模块化的神经网络库，使用python实现，并可以同时运行在TensorFlow和Theano上。旨在让用户进行最快速的原型实验，让想法变成结果的这个过程最短。TensorFlow和Theano的计算图支持更通用的计算，而Keras则专精于深度学习。</p>
+<h5 id="Scikit-Learn"><a href="#Scikit-Learn" class="headerlink" title="Scikit-Learn"></a>Scikit-Learn</h5><p>Scikit-kearn Python框架具有广泛的可靠的机器学习算法，但是没有深度学习算法。如果使用python的话，Scikit-kearn可能是一般机器学习库中的最佳选择。</p>
+<p>Scikit-kearn是一个强大的，成熟的机器学习python库，包含各种各样成熟的算法和集成图。但是不包括深度学习或者强化学习，缺少图模型和序列预测。</p>
+<p>Scikit-kearn对分类、回归、聚类、降维、模型选择和预处理算法具有很好的选择。</p>
+<h4 id="Learn-With-Google-AI-–TensorFlow"><a href="#Learn-With-Google-AI-–TensorFlow" class="headerlink" title="Learn With Google AI –TensorFlow"></a>Learn With Google AI –TensorFlow</h4><p>谷歌开放了像TensorFlow这样的高级项目，也有Doodles这样的低门槛且有趣的项目，这些项目旨在以更实用的方式展示AI。Google想通过把Learn with Google AI 网站作为机器学习和人工智能材料库，让人们能够“了解核心ML概念，开发和磨练ML技能，并将ML应用于现实世界”。</p>
+<p>Learn with Google AI 网站中一门名为机器学习速成班(Machine Learning Crash Course, MLCC)的免费课程。需要掌握的基础前期知识有入门级代数，编程基础知识和Python。</p>
+<p>Google机器学习网站：<a href="https://zhuanlan.zhihu.com/p/34129033" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/34129033</a></p>
+<p><a href="https://developers.google.cn/machine-learning/crash-course/ml-intro" target="_blank" rel="noopener">https://developers.google.cn/machine-learning/crash-course/ml-intro</a></p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从零开始掌握Python机器学习：十四步教程</title>
+    <url>/2020/cka0u3h7p000cawgx6lei7na4/</url>
+    <content><![CDATA[<p>参考资料：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/25761248" target="_blank" rel="noopener">知乎-机器之心-从零开始掌握python机器学习</a></p>
+<p><a href="https://www.kdnuggets.com/2015/11/seven-steps-machine-learning-python.html" target="_blank" rel="noopener">7 steps to mastering machine learning with python</a></p>
+<p><a href="https://www.kdnuggets.com/2017/03/seven-more-steps-machine-learning-python.html" target="_blank" rel="noopener">7 more steps to mastering machine learning with python</a></p>
+<a id="more"></a>
+
+
+
+<h4 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h4><p><strong>第一步–基本python技能</strong></p>
+<p><a href="https://developers.google.com/edu/python/" target="_blank" rel="noopener">Google’s python class</a></p>
+<p><a href="https://www.youtube.com/playlist?list=PLfZeRfzhgQzTMgwFVezQbnpc1ck0I6CQl" target="_blank" rel="noopener">谷歌开发者python教程(强烈推荐视觉学习者学习)：</a></p>
+<p><a href="https://engineering.ucsb.edu/~shell/che210d/python.pdf" target="_blank" rel="noopener">Python科学计算入门(来自UCSB Engineering 的 M.Scott Shell)</a></p>
+<p><a href="https://learnxinyminutes.com/docs/python/" target="_blank" rel="noopener">在Y分钟内学会X(X=python)</a></p>
+<p><a href="https://www.python.org/doc/" target="_blank" rel="noopener">Python官方文档</a></p>
+<p><strong>第二步–机器学习基础技巧</strong></p>
+<p>对实践来说，我们并不需要获得机器学习博士般的理论理解，想要成为一个高效的程序员并不必进行计算机科学理论的学习。</p>
+<p>注意在吴恩达的机器学习课程中，可以跳过与特定的Octave的内容。<a href="http://www.holehouse.org/mlclass/" target="_blank" rel="noopener">吴恩达课程的非官方笔记</a></p>
+<p><a href="http://www.cs.cmu.edu/~ninamf/courses/601sp15/lectures.shtml" target="_blank" rel="noopener">Tom Mitchell的机器学习课程</a></p>
+<p><strong>第三步–科学计算Python软件包</strong></p>
+<ul>
+<li>numpy – 主要对其N维数组对象有用 <a href="http://www.numpy.org/" target="_blank" rel="noopener">Numpy-Numpy</a></li>
+<li>pandas – Python数据分析库，包括数据框架(dataframes)等结构 <a href="http://pandas.pydata.org/" target="_blank" rel="noopener">Pandas</a>, <a href="http://pandas.pydata.org/pandas-docs/stable/10min.html" target="_blank" rel="noopener">10 Minutes to Pandas</a></li>
+<li>matplotlib – 一个2D绘图库 <a href="https://matplotlib.org/" target="_blank" rel="noopener">Matplotlib</a></li>
+<li>scikit-learn – 用于数据分析和数据挖掘的机器学习算法 <a href="http://scikit-learn.org/stable/" target="_blank" rel="noopener">Scikit-learn</a></li>
+</ul>
+<p>Scipy Lecture Notes也是学习科学计算库的资料。<a href="http://www.scipy-lectures.org/" target="_blank" rel="noopener">Scipy lecture Notes</a></p>
+<p><strong>第四步–使用Python学习机器学习</strong></p>
+<p>现在是使用Python机器学习标准库scikit-learn来实现机器学习算法。</p>
+<ul>
+<li>Jake VanderPlas写的关于scikit-learn的简介 <a href="http://nbviewer.jupyter.org/github/donnemartin/data-science-ipython-notebooks/blob/master/scikit-learn/scikit-learn-intro.ipynb" target="_blank" rel="noopener">Jupyter Notebook Viewer-Scikit learn</a></li>
+<li>Randal Olson的机器学习案例笔记 <a href="http://nbviewer.jupyter.org/github/rhiever/Data-Analysis-and-Machine-Learning-Projects/tree/master/example-data-science-notebook/" target="_blank" rel="noopener">Jupyter Notebook Viewer-Scikit learn</a></li>
+<li>Kevin Markham的模型评估 <a href="https://github.com/justmarkham/scikit-learn-videos/blob/master/05_model_evaluation.ipynb" target="_blank" rel="noopener">Justmarkham/scikit-learn-videos</a></li>
+</ul>
+<p><strong>第五步–Python上实现机器学习的基本算法</strong></p>
+<ul>
+<li>K-均值聚类 <a href="https://github.com/jakevdp/sklearn_pycon2015/blob/master/notebooks/04.2-Clustering-KMeans.ipynb" target="_blank" rel="noopener">jakevdp/sklearn_pycon2015</a>, 能很好的解决非监督学习问题</li>
+<li>决策树 <a href="http://thegrimmscientist.com/tutorial-decision-trees/" target="_blank" rel="noopener">Tutorial: Decision Trees</a>, 分类问题</li>
+<li>线性回归 <a href="http://nbviewer.jupyter.org/github/donnemartin/data-science-ipython-notebooks/blob/master/scikit-learn/scikit-learn-linear-reg.ipynb" target="_blank" rel="noopener">Jupyter Notebook Viewer-reg</a>, 连续性数值预测</li>
+<li>logistic回归 <a href="https://github.com/justmarkham/gadsdc/blob/master/logistic_assignment/README.md" target="_blank" rel="noopener">justmarkham/gadsdc</a>, logistic回归</li>
+</ul>
+<p><strong>第六步–Python上实现进阶机器学习算法</strong></p>
+<ul>
+<li>支持向量机 <a href="https://github.com/jakevdp/sklearn_pycon2015/blob/master/notebooks/03.1-Classification-SVMs.ipynb" target="_blank" rel="noopener">jakevdp/sklearn_pycon2015_svm</a>, 一种依赖于将数据转换映射到高维空间的非线性分类器</li>
+<li>Kaggle Titanic竞赛(使用随机森林) <a href="http://nbviewer.jupyter.org/github/donnemartin/data-science-ipython-notebooks/blob/master/kaggle/titanic.ipynb" target="_blank" rel="noopener">Jupyter Notebook Viewer- kaggle</a>, 检查学习作为继承分类器的随机森林</li>
+<li>降维算法 <a href="https://github.com/jakevdp/sklearn_pycon2015/blob/master/notebooks/04.1-Dimensionality-PCA.ipynb" target="_blank" rel="noopener">jakevdp/sklearn_pycon2015_pca</a>, 常用于减少在问题中所使用的变量，主成分分析法</li>
+</ul>
+<p><strong>第七步–Python深度学习</strong></p>
+<p>深度学习无处不在。如果对神经网络还不熟悉，KDnuggets有很多的文章详细介绍了深度学习的内容。然后在2个先进的当代Python深度学习库中学习简单的网络实现。</p>
+<ul>
+<li>神经网络与深度学习, Michael Nielsen: <a href="http://neuralnetworksanddeeplearning.com/" target="_blank" rel="noopener">Neural networks and deep learning</a></li>
+</ul>
+<h4 id="进阶篇"><a href="#进阶篇" class="headerlink" title="进阶篇"></a>进阶篇</h4><h5 id="机器学习可以从四个方面入手学习"><a href="#机器学习可以从四个方面入手学习" class="headerlink" title="机器学习可以从四个方面入手学习"></a>机器学习可以从四个方面入手学习</h5><ol>
+<li>机器学习第一语言Python</li>
+<li>机器学习中的数学基础</li>
+<li>机器学习中的算法基础</li>
+<li>深度学习的框架基础</li>
+</ol>
+<h5 id="机器学习语言–Python"><a href="#机器学习语言–Python" class="headerlink" title="机器学习语言–Python"></a>机器学习语言–Python</h5><p>​    首先，初学者在入门Python时候可以学习下面的资源，着重学习Python的基本语法和应用。</p>
+<p>​     [《笨方法学Python》(缺点是在Python2)](file:///E:/Deep Learning and AI/Machine Learning For Beginner/笨方法学Python(第四版).pdf)</p>
+<p>​    <a href="https://www.bilibili.com/video/av4050443/" target="_blank" rel="noopener">《零基础入门学习Python》(小甲鱼视频教程)</a></p>
+<p>​    <a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000" target="_blank" rel="noopener">《廖雪峰Python教程》(网络版)</a></p>
+<p>​    [《廖雪峰Python教程》(本地文件版)](file:///E:/Deep Learning and AI/Machine Learning For Beginner/python3教程-廖雪峰.pdf))</p>
+<p>​    <strong>基本内容有：</strong></p>
+<p>基本函数，条件判断和循环，函数和类</p>
+<p>科学计算库numpy 和 pandas</p>
+<p>​    [《机器学习numpy与pandas基础》](file:///E:/Deep Learning and AI/Machine Learning For Beginner/机器学习numpy和pandas基础.pdf)</p>
+<p>​    <a href="http://python.jobbole.com/84416/" target="_blank" rel="noopener">《十分钟搞定pandas》</a></p>
+<p>画图库matplotlib</p>
+<p>​    <a href="http://python.jobbole.com/85106/" target="_blank" rel="noopener">《matplotlib绘图可视化知识点整理》</a></p>
+<p>​    每一个数据样本都可以理解为其特征空间中的一个点。当数据超过三维之后，是不能够可视化的，但是可以在保证数据信息损失尽可能小的前提下压缩数据维度，通过算法先把数据压缩到三维内，再做可视化处理。同时，matplotlib可以画出训练过程中一些数据的变化。</p>
+<p>爬虫</p>
+<p>​    基础语法学习之后，可以进行一下–爬虫。此处我们爬虫的目的是用来练手，只需要学习使用最基础的requests、beautifulsoup等库来实现抓取数据的目的即可。</p>
+<p>​    <a href="https://zhuanlan.zhihu.com/Ehco-python" target="_blank" rel="noopener">《从零开始写Python爬虫(知乎专栏)》</a></p>
+<h5 id="机器学习中的数学基础"><a href="#机器学习中的数学基础" class="headerlink" title="机器学习中的数学基础"></a>机器学习中的数学基础</h5><p>​    下面是入门机器学习需要的最最基础的数学知识，一些高阶的数学知识，用到的时候再学习。</p>
+<p><strong>高等数学</strong></p>
+<p>​    导数及偏导数，对应机器学习中的梯度，机器学习中学习的参数需要通过梯度下降进行更新。</p>
+<p>​    复合函数的链式法则，同1一样，目的也是为了求出梯度更新参数，但因为深度学习网络有多层，所以模型的预测函数是个复合函数，我们需要通过链式法则从后往前求出每层参数的梯度，进而更新每层里的参数，这也就是大名鼎鼎的“反向传播法”。</p>
+<p>​    同时可以去了解下数学中的最优化问题，大概就是目标函数在什么条件下能够取到最值的问题，因为机器学习的问题到最后都是要转化为一个损失函数最优化的问题。</p>
+<p><strong>线性代数</strong></p>
+<p>​    标量、向量、矩阵及张量的定义及运算，让我们再回顾下，在机器的眼里，万世间物即可为矩阵，机器学习的过程其实也就是矩阵计算的过程。这也就是NVIDIA的GPU在近两年那么火的原因，因为GPU在矩阵计算上天然有很大的优势。</p>
+<p>​    范数，对应机器学习中正则项，正则项通常会加在已有的损失函数上用来减少训练的过拟合问题。<br>范数的一些学习资料: <a href="https://blog.csdn.net/shijing_0214/article/details/51757564" target="_blank" rel="noopener">https://blog.csdn.net/shijing_0214/article/details/51757564</a><br><a href="https://blog.csdn.net/zouxy09/article/details/24971995" target="_blank" rel="noopener">https://blog.csdn.net/zouxy09/article/details/24971995</a><br><a href="https://blog.csdn.net/susanzhang1231/article/details/52127011" target="_blank" rel="noopener">https://blog.csdn.net/susanzhang1231/article/details/52127011</a></p>
+<p>​    常见的距离计算方式：欧式距离、曼哈顿距离、余弦距离等，我们之前说过数据样本可以表示为其特征空间里的点，而距离可以用来衡量他们的相似度。<br><a href="https://blog.csdn.net/Kevin_cc98/article/details/73742037" target="_blank" rel="noopener">https://blog.csdn.net/Kevin_cc98/article/details/73742037</a></p>
+<p><strong>概率论</strong></p>
+<p>​    条件概率、贝叶斯，基于概率论的分类方法经常会用到。<br><a href="https://www.zhihu.com/question/26895086/answer/224503078" target="_blank" rel="noopener">https://www.zhihu.com/question/26895086/answer/224503078</a><br>概率 等于 用数值来表示某件事情发生的可能性 等于 你可以预测未来<br>只要面临选择问题，概率就会用数值表达哪种可能性最大，然后帮助你作出最好的选择。<br>==事件A发生的概率=事件A可能发生方式的个数 / 所有可能结果的总数==<br>主观概率和客观概率</p>
+<p>​    期望与方差，机器学习里一般都会对数据进行normalized的处理，这个时候很可能会用到期望和方差。<br>期望和方差是用来描述一维数据的，<br>期望可以在利用概率预测长期结果，以及度量这些预测结果的准确性。<br>一个离散性随机变量的期望是试验中每次可能结果的概率乘以其结果的总和，$E(X)=\sum x P(X=x)$. 期望给出的是一个变量的典型值或平均值。<br>方差(variance)，是衡量随机变量或一组数据离散程度的度量，是衡量源数据和期望值相差的度量值。$Var(X)=E(X-\mu)^2=\sum (x-\mu)^2 P(X=x)$. 其中$\mu$是期望值<br>标准差，是方差的平方根，$\sigma = \sqrt {Vae(X)}$.<br>具有独立观测，线性变化的关系。</p>
+<p>​    协方差，能够表征两个变量的相关性，在PCA降维算法中有用到，变量越相关，我们越可能对他们进行降维处理。<br><a href="https://blog.csdn.net/beechina/article/details/51074750" target="_blank" rel="noopener">https://blog.csdn.net/beechina/article/details/51074750</a><br>协方差(covariance)，是用来度量两个随机变量关系的统计量。从协方差中可以得到一个相关系数，反应两个变量之间相关性。<br>$$<br>Cov(X,Y) = E[(X-E(X))(Y-E(Y))]=E[XY]-E[X]E[Y]<br>$$<br>定义相关系数：<br>$$<br>\rho_{XY} = \frac {Cov(X,Y)} {\sqrt{Var(X)} \sqrt{Var(Y)}}<br>$$<br><a href="https://www.zhihu.com/question/20852004" target="_blank" rel="noopener">https://www.zhihu.com/question/20852004</a></p>
+<p>当变量再增加之后，就需要使用协方差矩阵。计算时候是不同维度之间的协方差。</p>
+<p>​    常见分布：0-1分布、二项分布、高斯分布等，高斯分布很重要，数据normalized跟它有关，参数的初始化特跟它有关。<br>数据类型：离散数据和连续数据，分布：数据在统计图中的形状，概率分布就是将数据类型和分布组合起来，在统计图中表示概率，横轴是数据的值，纵轴是横轴上对应数据值的概率。<br><a href="https://www.zhihu.com/question/36214010/answer/208718886" target="_blank" rel="noopener">https://www.zhihu.com/question/36214010/answer/208718886</a><br>3种离散概率分布：二项分布，泊松分布，几何分布<br>1种连续概率分布：正态分布，<br>每一个分布都可以从下面的三点入手：** 分布有什么用？如何判断是不是 ** 分布？ ** 分布如何计算概率？</p>
+<p>0-1分布，又叫两点分布，或叫伯努利分布。只有两个变量值的随机分布。<br>$$<br>P{X=k} = p^k (1-p)^{1-k},  k=0,1<br>$$<br>二项分布，又叫n重伯努利分布。记为$b(k;n,p)$。是n次独立的伯努利试验，当$n=1$时候，二项分布为0-1分布。<br>$$<br>P{X=k} = \binom n k p^k(1-p)^{n-k}<br>$$<br><a href="https://blog.csdn.net/qq280929090/article/details/53156655" target="_blank" rel="noopener">https://blog.csdn.net/qq280929090/article/details/53156655</a>二项分布<br>高斯分布(正态分布)，</p>
+<p>​    最大似然估计，在推导逻辑回归的损失函数时会用到。<br><a href="https://www.jianshu.com/p/f1d3906e4a3e" target="_blank" rel="noopener">https://www.jianshu.com/p/f1d3906e4a3e</a><br><a href="https://blog.csdn.net/zengxiantao1994/article/details/72787849" target="_blank" rel="noopener">https://blog.csdn.net/zengxiantao1994/article/details/72787849</a><br><a href="https://www.zhihu.com/question/20447622" target="_blank" rel="noopener">https://www.zhihu.com/question/20447622</a></p>
+<p><strong>信息论</strong></p>
+<p>​    了解下交叉熵的概念即可，大概知道这东西跟分类问题的损失函数有关即可。<br><a href="https://blog.csdn.net/u014097230/article/details/55103181" target="_blank" rel="noopener">https://blog.csdn.net/u014097230/article/details/55103181</a><br><a href="https://blog.csdn.net/wenzishou/article/details/77618992" target="_blank" rel="noopener">https://blog.csdn.net/wenzishou/article/details/77618992</a><br><a href="https://www.zhihu.com/question/41252833" target="_blank" rel="noopener">https://www.zhihu.com/question/41252833</a></p>
+<h5 id="机器学习中的算法基础"><a href="#机器学习中的算法基础" class="headerlink" title="机器学习中的算法基础"></a>机器学习中的算法基础</h5><p>​    <a href="https://www.bilibili.com/video/av16543434/" target="_blank" rel="noopener">《一天搞懂深度学习心得》(李宏毅-视频教程)</a></p>
+<p>​    [《深度学习介绍(李宏毅-PPT)》](file:///E:/Deep Learning and AI/Machine Learning For Beginner/深度学习介绍PPT-李宏毅.pdf)</p>
+<p>​    <a href="https://www.bilibili.com/video/av4168439/" target="_blank" rel="noopener">《Deel Learning.TV(视频教程)》</a></p>
+<p>​    <a href="https://www.bilibili.com/video/av9912938/" target="_blank" rel="noopener">《Machine Learning(吴恩达-视频教程)》</a>,侧重于传统机器学习，基础知识有：损失函数，梯度下降，线性回归，逻辑回归，SVM，反向传播法，正则化，KNN，K-Means，PCA等</p>
+<p>​    在图像处理领域，李飞飞和她的博士生教授的<a href="https://www.bilibili.com/video/av13260183/" target="_blank" rel="noopener">《Stanford CS231N 2017》课程</a>,</p>
+<p>​    <a href="https://www.bilibili.com/video/av10590361/" target="_blank" rel="noopener">《李宏毅机器学习2017》</a></p>
+<p>​    <a href="https://www.bilibili.com/video/av9770302/" target="_blank" rel="noopener">《李宏毅深度学习2017》</a></p>
+<p>​    两个辅助学习和理解deep learning的工具：</p>
+<p>​    TensorFlow出的网页工具<a href="http://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.85186&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false" target="_blank" rel="noopener">plarground</a>提供了几种简单类型的data，可以去调节网络结构，学        习率，激活函数，正则项等参数，可以非常直观的看到每个神经元和相关输出的变化，体会到简化的深    度学习模型调参的过程。</p>
+<p>​    <a href="https://cs.stanford.edu/people/karpathy/convnetjs/" target="_blank" rel="noopener">ConvNetJS</a>，它把一些经典数据集(Mnist和Cifar-10)每层网络的输出可视化出来，对于去理解不同网络做了什么事情帮助很大。</p>
+<h5 id="深度学习框架基础"><a href="#深度学习框架基础" class="headerlink" title="深度学习框架基础"></a>深度学习框架基础</h5><p>​    下面是专指的深度学习框架，重点是TensorFlow这个框架。</p>
+<p>​    对于Tensorflow的第一个学习资源是，<a href="https://www.bilibili.com/video/av9774551/" target="_blank" rel="noopener">《不同博士学位玩转Tensorflow深度学习》</a>,使用Tensorflow分别搭建了个CNN模型和RNN模型。</p>
+<p>​    以及一份[《三天速成TensorflowPPT-港科大》](file:///E:/Deep Learning and AI/Machine Learning For Beginner/三天速成TensorflowPPT-港科大/TF-UST-DAY1.pptx)的学习资料。</p>
+<p>​    以及<a href="https://www.bilibili.com/video/av16001891/" target="_blank" rel="noopener">《Tenforflow教程(莫烦)》</a></p>
+<p>​    最后一个很棒的资源是<a href="https://www.bilibili.com/video/av14307354/" target="_blank" rel="noopener">《Deep learning with Tensorflow》</a>.</p>
+<p>​    最后，在进行深度学习训练的时候，GPU是一个很好的选择，可以使用Amazon的AWS云服务，具体的攻略详情参考<a href="https://zhuanlan.zhihu.com/p/25066187" target="_blank" rel="noopener">《在AWS上配置深度学习主机》</a>.</p>
+<h5 id="Machine-Learning-–-Learning-Map"><a href="#Machine-Learning-–-Learning-Map" class="headerlink" title="Machine Learning – Learning Map"></a>Machine Learning – Learning Map</h5><ul>
+<li>Supervised Learning (learn from teacher)<ul>
+<li>Regression</li>
+<li>Classification<ul>
+<li>Linear Model</li>
+<li>Non-linear Model -&gt;Deep Learning   SVM,decision tree,K-NN…</li>
+</ul>
+</li>
+<li>Structured Learning</li>
+</ul>
+</li>
+<li>Unsupervised Learning</li>
+<li>Semi-supervised learning</li>
+<li>Transfer Learning</li>
+<li>Reinforcement Learning (learn from critics)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>科学论文搜索和阅读(How to search and read paper)</title>
+    <url>/2020/cka0u3h7r000eawgx7w6i2sct/</url>
+    <content><![CDATA[<h3 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h3><p>科研工作者必须要阅读期刊论文，有如下的原因： 紧跟最新科研动态， 整理新领域的文献综述.等。 阅读期刊有助于培养我们：从无组织的知识中检索、筛选、组织知识的能力。对一切既有进行精确批判的独立自主的判断能力。创造新知识的能力。</p>
+<p>所以，要想成为一个合格的博士生(以及科研工作者)，必须要把大量的时间用在阅读大量的论文工作中。</p>
+<p>同时，还需要注意：研究生期间需要学什么。一般按照下面三条要求自己，则可以系统地建立自己的科学研究素养。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1 建立合理的知识结构。广泛涉猎学科基本知识，深入了解研究领域的方方面面、过去和现在</span><br><span class="line">2 掌握独立研究的方法和技能，多学习各种研究方法，熟练掌握研究过程和步骤</span><br><span class="line">3 学会写论文。写论文不仅是训练表达能力，更是训练思维的逻辑性，论文体例虽是八股，但却是整理思路、与他人沟通的有效结构</span><br></pre></td></tr></table></figure>
+
+<p>下文中，对科学论文的搜索和阅读的一些方法论方面的内容，进行了系统性的总结，合理利用这些方法，可以实现高效的论文检索和阅读，为自己的科研过程打下坚实的论文阅读基础，以及论文写作能力。</p>
+<hr>
+<p>参考资料：</p>
+<p><a href="https://violentmetaphors.com/2013/08/25/how-to-read-and-understand-a-scientific-paper-2/" target="_blank" rel="noopener">How to read and understand a scientific paper: a guide for non-scientists</a></p>
+<p><a href="">台湾清华彭明辉-研究生手册</a></p>
+<p><a href="https://www.zhihu.com/question/23924014" target="_blank" rel="noopener">如何有针对性地高效阅读一篇学术论文-知乎</a></p>
+<a id="more"></a>
+
+
+
+<h3 id="科研需要的能力"><a href="#科研需要的能力" class="headerlink" title="科研需要的能力"></a>科研需要的能力</h3><p>作为合格的科研工作者，通过长时间的论文阅读科研训练之后，需要掌握如下的能力。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1 数据检索的能力：有能力毫无遗漏地检索出该领域所有重要文献。关键词和查询程序</span><br><span class="line"></span><br><span class="line">2 资料筛选的能力：能只读题目摘要和结论就能判定论文是否有进一步阅读的价值。</span><br><span class="line"></span><br><span class="line">3 期刊阅读的能力：有能力将无系统的碎片化的文献组织为一个系统性知识体系。将期刊论文最核心的创意以及其引用的其他的文献的内容整理组织在一起。</span><br><span class="line"></span><br><span class="line">4 文献的分析能力：其核心是理性批判，能在读懂文献的基础上对文献内容进行理性批判。有能力分析出论文的优点和缺点，并进行对比分析，并且找到充分的理由去支持批判。</span><br><span class="line"></span><br><span class="line">5 创新的能力：在理性批判的基础上，对前人的方法做出改进和创新。从前人的论文中的优点和缺点，找到突破瓶颈所需要的关键性创意。着重在关键问题上的突破和创新。</span><br></pre></td></tr></table></figure>
+
+<p>同时，作为一个实验物理科研工作者，还需要熟练掌握实验技能。超冷原子实验研究生，需要掌握的实验能力如下表所示：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1 光学光路技能</span><br><span class="line">2 电子学技能</span><br><span class="line">3 电磁技能</span><br><span class="line">4 激光器</span><br><span class="line">5 编程技能</span><br><span class="line">。。。</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="学术搜索"><a href="#学术搜索" class="headerlink" title="学术搜索"></a>学术搜索</h3><h4 id="学术检索入口"><a href="#学术检索入口" class="headerlink" title="学术检索入口"></a>学术检索入口</h4><p>*<em>高校图书馆 – *</em></p>
+<p>通过学校的VPN-IP地址，登录到高校的图书馆，在图书馆主页中可以找到丰富的学术数据库。比如，以中科大为例，<a href="http://lib.ustc.edu.cn/dbmap/" target="_blank" rel="noopener">中科大图书馆数据库地图</a>. </p>
+<p><strong>Google学术 –</strong> </p>
+<p>最强大的学术工具。但是需要科学上网才能访问Google学术。</p>
+<p>可以使用Google学术的镜像网站访问，<a href="https://ac.scmor.com/" target="_blank" rel="noopener">Google镜像导航</a></p>
+<p><strong>必应学术 –</strong></p>
+<p>为微软的学术搜索地址。可以直接访问，<a href="https://cn.bing.com/academic?mkt=zh-CN" target="_blank" rel="noopener">必应学术</a></p>
+<p>*<em>Arxiv – *</em></p>
+<p>根据自己的专业方向，可以关注与自己专业相关的最新的科研动态，如<a href="https://arxiv.org/list/cond-mat.quant-gas/recent" target="_blank" rel="noopener">Arxiv-quantum gases</a> </p>
+<p>*<em>喵咪论文 – *</em></p>
+<p>这是一个镜像网站，有很多的论文库。在选择论文下载方式时候，可以在这上面进行下载。直接访问，<a href="https://lunwen.im/" target="_blank" rel="noopener">喵咪论文</a></p>
+<p><strong>大牛网站–</strong></p>
+<p>对于领域内的权威组，直接访问论文的大牛的主页，在主页的publication目录，可以找到最新的论文情况。</p>
+<hr>
+<h4 id="论文下载"><a href="#论文下载" class="headerlink" title="论文下载"></a>论文下载</h4><p>论文下载，可以有不同的渠道：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1 通过arxiv关注到的最新的论文，可以直接在arxiv网站上进行下载</span><br><span class="line">2 通过google学术或者必应学术检索到的论文，一般通过高校的VPN-IP地址访问，可以直接下载</span><br><span class="line">3 通过高校图书馆目录进入进行访问</span><br><span class="line">4 通过镜像网站进行下载，喵咪论文</span><br><span class="line">5 直接向论文作者咨询论文</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h4 id="鉴别论文好坏"><a href="#鉴别论文好坏" class="headerlink" title="鉴别论文好坏"></a>鉴别论文好坏</h4><p>在阅读论文时要以优秀论文为主。在检索论文将诶单，就要鉴别出论文的质量。一般关注的指标有：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1 论文被引用次数(很重要，大部分检索工具默认)</span><br><span class="line">2 论文发表的会议或者期刊的排名(顶级期刊和会议的论文平均水平质量非常高)</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h4 id="特别注意"><a href="#特别注意" class="headerlink" title="特别注意"></a>特别注意</h4><p>导师指明要阅读的论文，一定要阅读。以及此论文的作者相关的工作也要进行关注。</p>
+<p>领域内大牛组的论文，一定要关注阅读。</p>
+<p>与自己目前研究的课题的论文要特别注意阅读。</p>
+<hr>
+<h3 id="拓展搜索"><a href="#拓展搜索" class="headerlink" title="拓展搜索"></a>拓展搜索</h3><p>一般情况下，搜一篇明确的论文需要不到1秒钟，但是通过搜索扩充自己对领域的认识，这个过程需要慢慢积累。对于一个新领域，在进行文献综述整理过程中，需要了解：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1 关键词，关键技术，领域划分，重要论文列表以及重量级大牛。</span><br><span class="line">2 再根据自己的具体的研究方向，进一步细分和研究。</span><br><span class="line">3 注意要将一批文献之间的关系梳理清楚。</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>如果这个领域有几篇很有影响力的综述或者优秀的学位论文，呢么通过这些论文，你就有了以下东西：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1 关键词,关键技术</span><br><span class="line">2 论文列表(且是分好类的)</span><br><span class="line">3 领域划分</span><br><span class="line">4 大牛名单</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>下面，就从几种常用的方式入手，来进行搜索整理：</p>
+<p>*<em>关键词方式 – *</em></p>
+<p>关键词(keyword)是搜索的核心，也是找到论文的核心。寻找关键词不能心急，需要不断阅读不断积累。关键词积累很漫长，需要阅读大量文献，但是随着时间推移，这些关键词会帮助我们更好的理解这个领域。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">寻找英文关键词和论文；</span><br><span class="line">用已知的关键词，搜索并阅读相关论文，扩充关键词库；</span><br><span class="line">分类和细化关键词，删除一些干扰的结果；</span><br><span class="line">尝试和其他人交流，一次好的交流可以获得很多最新的关键词；</span><br><span class="line">分析最近的热门论文，更新和扩充关键词。</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>*<em>参考文献方式 – *</em></p>
+<p>这个方法简单有效，但是需要有明确的目标，在选择论文时候需要找最重要的论文。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">搜到一篇相关论文(论文越好参考文献越有价值)；</span><br><span class="line">从这篇论文的参考文献入手；</span><br><span class="line">不断增加论文，分类论文；</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>*<em>大牛效应方式 – *</em></p>
+<p>对于大牛研究组的工作，需要主动关注他们的科研动态。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">找到一篇或者多篇文章；</span><br><span class="line">挨个查作者最近的论文，论文都很好，那么就可以收藏(论文+大牛)；</span><br><span class="line">可以尝试订阅一些大牛的论文动态(可以了解他的研究进展状况和领域趋势)；</span><br><span class="line">密切关注在该研究领域和方向的顶尖group所发表的论文并认真研读;</span><br><span class="line">对于本研究领域的国际领军人物和实验室，应该多花一点时间去研究他们的主页;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>*<em>会议扫墙方式 – *</em></p>
+<p>关于领域内召开的会议，定期浏览一次相关的领域会议，可以保持对领域的清晰认识。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">获取优秀会议和期刊列表；</span><br><span class="line">选取和自己相关的会议和期刊；</span><br><span class="line">从今年开始往前推，将这些会议期刊上的相关论文都下载下来。</span><br></pre></td></tr></table></figure>
+
+<p>在扫墙过程中，先浏览abstract和introduction，觉得相关或者感兴趣再进一步浏览。千万不要逐个通篇阅读，费力费脑，吃力不讨好。</p>
+<hr>
+<p><strong>特别注意 –</strong></p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">导师指明要阅读的论文，一定要阅读。以及此论文的作者相关的工作也要进行关注。</span><br><span class="line">领域内大牛组的论文，一定要关注阅读。</span><br><span class="line">与自己目前研究的课题的论文要特别注意阅读。</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="文献管理"><a href="#文献管理" class="headerlink" title="文献管理"></a>文献管理</h3><p>当我们检索到需要阅读的论文之后，以及相关的论文信息之后，需要对这些大量的论文进行文献管理，方便后续的论文阅读和整理，可以大大提高后续文献阅读的效率。</p>
+<p>在下载论文时候，需要注意：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1.下载电子版文献时（caj，pdf，html），把文章题目粘贴为文件名（文件名不能有特殊符号）</span><br><span class="line">2.不同主题存入不同文件夹。文件夹的题目要简短，如：PD，LTP,PKC，NO。</span><br><span class="line">3.看过的文献归入子文件夹，最起码要把有用的和没用的分开。</span><br><span class="line">4.重要文献根据重要程度在文件名前加001，002，003编号，然后按名称排列图标，最重要的文献就排在最前了。而且重要文献要注意追踪。</span><br></pre></td></tr></table></figure>
+
+<p>文献管理，可以使用Citavi软件。</p>
+<p><a href="https://www.citavi.com/en" target="_blank" rel="noopener">citavi-en</a></p>
+<p><a href="https://www.softhead-citavi.com/" target="_blank" rel="noopener">citavi-cn</a></p>
+<hr>
+<h3 id="如何阅读论文-how-to-read-research-papers"><a href="#如何阅读论文-how-to-read-research-papers" class="headerlink" title="如何阅读论文(how to read research papers)"></a>如何阅读论文(how to read research papers)</h3><h4 id="期刊论文的结构"><a href="#期刊论文的结构" class="headerlink" title="期刊论文的结构"></a>期刊论文的结构</h4><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">标题title: </span><br><span class="line">摘要abstract: 论文最重要的部分，一般由导致直接把关</span><br><span class="line">关键词keywords: </span><br><span class="line">引言introduction: 重要性仅次于摘要，内容更加易懂，包含相关工作对领域内工作的分类和总结</span><br><span class="line">实验experimental: 论文细节，对理解论文非常重要</span><br><span class="line">结果讨论results&amp;discussion: 论文最重要的结果展示</span><br><span class="line">总结conclusion: 全文总结和展望</span><br><span class="line">参考文献reference: 论文引用的文献列表</span><br><span class="line">附录appendix: 有些无法放在正文中的内容，如证明的细节和相关的中间结果</span><br></pre></td></tr></table></figure>
+
+<p>一篇论文中，最重要的部分依次是：图表，讨论，文字结果，方法。</p>
+<p>尽量去把握作者的研究思路，然后是学习他们的分析方法，最后是学习写作技巧和写作语言方式等。</p>
+<hr>
+<h4 id="3步法阅读论文"><a href="#3步法阅读论文" class="headerlink" title="3步法阅读论文"></a>3步法阅读论文</h4><p>在阅读论文过程中，千万不能采用从头读到尾的方式，可以采取3步分步法进行文献的阅读，每一步都有需要完成的目标。</p>
+<hr>
+<p>第一步 – 快速阅读，general idea about the paper</p>
+<p>目标：宏观了解论文，研究背景，对论文进行筛选，决定是否需要进一步阅读</p>
+<p>时间：5 – 10 分钟</p>
+<p>过程：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1 carefully read the title, abstract, and introduction</span><br><span class="line">2 read the section and sub-section headings, but ignore everything else</span><br><span class="line">3 read the conclusions</span><br><span class="line">4 glance over the references, mentally ticking off the ones you've already read</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p>通过此第一步的阅读之后，你自己是否可以回答下面的5-Cs：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1 Category: What type of paper is this? A measurement paper? An analysis of an existing system? A description of a research prototype?</span><br><span class="line">2 Context: Which other papers is it related to? Which theoretical bases were used to analyze the problem? </span><br><span class="line">3 Correctness: Do the assumptions appear to be valid? </span><br><span class="line">4 Contributions: What are the paper's main contributions? </span><br><span class="line">5 Clarity: Is the paper well written?</span><br><span class="line"><span class="emphasis">***</span>*</span><br><span class="line">1 领域内最常被引述的方法有哪些？</span><br><span class="line">2 这些方法可以分为哪些主要的流派？</span><br><span class="line">3 每个流派的主要特色(优点和缺点)是什么？</span><br><span class="line">4 这个领域内大家认为重要的关键词有哪些？有哪些特性是大家重视的优点？有哪些特性是大家在意的缺点？这些优点和缺点通常在哪些应用场合会比较被重视？在哪些应用场合时比较不会被重视？</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<p>abstract说明了这篇论文的主要贡献、方法特色和主要内容。introduction介绍了问题的背景和起源，交代前人在这个课题上已经有的主要贡献，说清楚前人留下来的未解决的问题，以及在这个背景下这篇论文的想解决的问题和它的重要性。<strong>现存的问题，才是这个论文的核心观点了。</strong></p>
+<p>必须要学会从abstract和introduction便可以判断出这篇论文的重点和你的研究有没有直接关联，是否需要进一步进行阅读。</p>
+<hr>
+<p>第二步 –  grasp the paper’s content, but not its details such as proofs</p>
+<p>目标：理解论文的关键点和内容， make comments</p>
+<p>时间：1小时</p>
+<p>过程：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1 look carefully at the figures, diagrams and other illustrations in the paper. Pay special attention to graphs. </span><br><span class="line">Are the axes properly labeled? Are results shown with error bars, so that conclusions are statistically significant?</span><br><span class="line">Common mistakes like these will seperate rushed, shoddy work from the truly excellent. </span><br><span class="line">2 remember to mark relevant unread references for further reading (this is a good way to learn more about the background of the paper)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p>通过第二步阅读，你需要完成：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1 grasp the content of the paper</span><br><span class="line">2 summarize the main thrust of the paper, with supporting evidence</span><br><span class="line"><span class="emphasis">***</span>*</span><br><span class="line">1 这篇论文的主要假设是什么？</span><br><span class="line">2 在这些假设下，这篇论文主要有什么好处？</span><br><span class="line">3 这一派的主要缺点有哪些？</span><br><span class="line">4 综合，这一派最适合什么时候使用，最不适合什么时候使用？</span><br></pre></td></tr></table></figure>
+
+<p>有时候第二步之后，由于种种原因，你还是无法理解论文的主要内容，那么可以采取如下的方式：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1 set the paper aside</span><br><span class="line">2 return to the paper later, perhaps after reading background meterial</span><br><span class="line">3 persevere and go on to the third pass</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<p>有时候，大部分文献不需要精度，粗度即可，学会跳过障碍，不要纠结于细节。</p>
+<hr>
+<p>第三步 –  understand the paper in depth</p>
+<p>目标：to attempt to virtually re-implement the paper, that is, making the same assumptions as the authors, re-create the work. comparing…</p>
+<p>时间：4-5小时(beginner), 1小时(experienced reader)</p>
+<p>过程：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1 should identify and challenge every assumption in every statement</span><br><span class="line">2 should think about how you yourself would present a particular idea</span><br><span class="line">3 comparson of the actural with virtual lends to a sharp insight into the proof and presentation techniques in the paper</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p>第3步结束之后，你需要实现的是：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1 be able to reconstruct the entire structure of the paper from memory</span><br><span class="line">2 be able to identify its strong and weak points</span><br><span class="line">3 be able to pinpoint implicit assumptions, missing citations to relevant work, and potential issues with experimental or analytical techniques</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 这篇论文的主要假设是什么？</span><br><span class="line">2 在这些假设下，这篇论文主要有什么好处？</span><br><span class="line">3 这些好处主要表现在哪些公式的哪些项目的简化上？</span><br><span class="line">4 这一派的主要缺点有哪些？</span><br><span class="line">5 综合，这一派最适合什么时候使用，最不适合什么时候使用？</span><br></pre></td></tr></table></figure>
+
+<p>充分发挥想象力对读不懂的部分进行猜测。不要求把某一篇文献读到很深的深度，而是把一批文献读到一个适当的深度。同时将一批文献之间的关系梳理清楚。一定是一整批一起读懂到讴歌层次，而不是逐篇逐篇地整篇一次性读懂。有时候阅读过程中，论文B的观点会帮助我们理解论文A的观点。</p>
+<p>注意，在阅读时候，要有选择性的阅读，多吸收论文的点子，不要太纠结非常细枝末节的内容。</p>
+<p>每个阶段可以对应一次或者多次阅读，通过多次阅读来加深对论文的理解。千万不要指望一口气能够理解整偏论文的全部内容。</p>
+<hr>
+<h4 id="批判性阅读"><a href="#批判性阅读" class="headerlink" title="批判性阅读"></a>批判性阅读</h4><p>在对论文进行批判性分析时候，可以从如下的问题入手：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在read论文阶段：（前期）</span><br><span class="line">What is the author&#39;s main point?</span><br><span class="line">What is the author&#39;s purpose?</span><br><span class="line">Who is the author&#39;s intended audience?</span><br><span class="line">What arguments does the author use to support the main point?</span><br><span class="line">What evidence does the author present to support the arguments?</span><br><span class="line">What are the author&#39;s underlying assumptions or biases?</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在evaluate论文阶段：（中后期）</span><br><span class="line">Is the argument logical?</span><br><span class="line">Is the text well-organized, clear, and easy to read?</span><br><span class="line">Are the author&#39;s facts accurate?</span><br><span class="line">Have important terms been clearly defined?</span><br><span class="line">Is there sufficient evidence for the arguments?</span><br><span class="line">Do the arguments support the main point?</span><br><span class="line">Is the text appropriate for the intended audience?</span><br><span class="line">Does the text present and refute opposing points of view?</span><br><span class="line">Does the text help you understand the subject?</span><br><span class="line">Are there any words or sentences that evoke a strong response from you? </span><br><span class="line">  What are those words or sentences? What is your reaction?</span><br><span class="line">What is the origin of your reaction to this topic? When or where did </span><br><span class="line">  you first learn about it? Can you think of people, articles, or discussions </span><br><span class="line">  that have influenced your views? How might these be compared or contrasted to </span><br><span class="line">  this text?</span><br><span class="line">What questions or observations does this article suggest? That is, what </span><br><span class="line">  does the article make you think about?</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h4 id="补充内容"><a href="#补充内容" class="headerlink" title="补充内容"></a>补充内容</h4><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1 每次读完文献 (不管是细读还是粗读)，合上文献后,想想看，文章最重要的take home message是什么，如果不知道,就从abstract，conclusion里找，并且从discuss里最好确认一下。这样一来，一篇文章就过关了。take home message其实都不会很多，基本上是一些concepts，如果你发现你需要记得很多,那往往是没有读到重点。</span><br><span class="line">思考时间：这些实验和数据，是否真的解决了这个问题呢？或者说，为了解决这个问题，作者给出的假设是否契合呢？</span><br><span class="line">这里就要结合自己的思考了。</span><br><span class="line">不要试图去鸡蛋里挑骨头，尝试站在作者的角度去思考问题。无论如何，请把握住大方向。</span><br><span class="line"></span><br><span class="line">2 扩充知识面的读法，重点读introduction，看人家提出的问题，以及目前的进展类似的文章，每天读一两篇，一个月内就基本上对这个领域的某个方向有个大概的了解。读好的review也行，但这样人容易懒惰。</span><br><span class="line"></span><br><span class="line">3 为了写文章的读法，读文章的时候，尤其是看discussion 的时候，看到好的英文句型, 最好有意识的记一下，看一下作者是谁，哪篇文章，哪个期刊，这样以后照猫画虎写的时候,效率高些。比自己在那里半天琢磨出一个句子强的多。当然，读的多，写的多，你需要记得句型就越少。其实很简单，有意识的去总结和记亿, 就不容易忘记。</span><br><span class="line"></span><br><span class="line">4 集中时间看文献：看文献的时间越分散，浪费时间越多。集中时间看更容易联系起来，形成整体印象。</span><br><span class="line"></span><br><span class="line">5 做好记录和标记：复印或打印的文献，直接用笔标记或批注。pdf 或html 格式的文献，可以用编辑器标亮或改变文字颜色。这是避免时间浪费的又一重要手段。否则等于没看。</span><br><span class="line"></span><br><span class="line">6 阅读顺序：根据阅读目的选择合适的顺序。一般先看abstract、introduction，然后看discussion，最后看result 和method（结合图表）。</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="论文提醒和会议追踪"><a href="#论文提醒和会议追踪" class="headerlink" title="论文提醒和会议追踪"></a>论文提醒和会议追踪</h3><p>上面都是我们主动去检索需要的论文。一旦我们已经找到了相关的论文和作者名单之后，如何实现后续的论文自动来找你呢，此时就需要论文提醒和会议追踪。</p>
+<h3 id="案例分析和练习"><a href="#案例分析和练习" class="headerlink" title="案例分析和练习"></a>案例分析和练习</h3><h3 id="论文报告"><a href="#论文报告" class="headerlink" title="论文报告"></a>论文报告</h3><p>当阅读完一篇很重要的论文后，需要和其他人进行讨论，需要进行论文报告。论文报告的要求主要如下：（PPT）</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1 投影片第一页必须列出论文的题目、作者、论文出处、引用次数与年份。</span><br><span class="line">2 以下每一页投影片只能讲一个观点或结果，不可以在一张投影片里讲两个观点。</span><br><span class="line">3 说明这篇论文所研究的问题的重点。</span><br><span class="line">4 清楚交代这篇论文的主要假设，主要公式，与主要应用方式（以及应用上可能的解题流程）。 </span><br><span class="line">5 说明这篇论文的范例（simulation examples and/or experiments），预测这个方法在不同场合时可能会有的准确度或好用的程度 </span><br><span class="line">6 你个人的分析、评价与批评，包括：</span><br><span class="line">（6A）这篇论文最主要的创意是什么？</span><br><span class="line">（6B）这些创意在应用上有什么好处？</span><br><span class="line">（6C）这些创意和应用上的好处是在哪些条件下才能成立？</span><br><span class="line">（6D）这篇论文最主要的缺点或局限是什么？</span><br><span class="line">（6E）这些缺点或局限在应用上有什么坏处？</span><br><span class="line">（6F）这些缺点和应用上的坏处是因为哪些因素而引入的？</span><br><span class="line">（6G）你建议同门什么时候参考这篇论文的哪些部分？</span><br></pre></td></tr></table></figure>
+
+<p>注意：读论文和报告论文时，最重要的是它的创意和观念架构，而不是数学上恒等式推导过程的细节（顶多只要抓出关键的 equation 去弄懂以及说明清楚即可）。</p>
+<hr>
+<h3 id="论文写作"><a href="#论文写作" class="headerlink" title="论文写作"></a>论文写作</h3><p>科学研究的主要成果之一是论文，论文可以成为师生之间非常好的沟通载体。如果能够早和导师沟通，论文时期对自己的训练将会更加富有成效。</p>
+<p>我的建议是：采用原型方法进行论文写作，尽早完成论文的整体框架，在每个版本征求导师的意见。</p>
+<p>这样的好处是：导师可以较全面的了解你的想法，从而按照你的思路帮你拔高。相反，如果是零碎的部分去请教导师，导师往往会按照她如何做这个研究的角度给你提出建议和要求，因为两人的知识结构不同，会造成理解认识的误会，而影响论文研究的进展和流畅。</p>
+<p>(1) 论文要论才成文<br>注意提出论点、收集论据、进行论证。不要很感性地说些感觉和猜测，或者是平白地陈述我做了什么，为什么做，做到了什么程度，何去何从往往缺乏强有力的论证和阐述，功夫没有做到。</p>
+<p>（2）请重视摘要写作<br>摘要——简单概括地向别人介绍你的思想、观点、成果。摘要说明你知道你在做什么，你的写作目的，你对所做事情的价值认定。如果你的摘要不能成为你的论文的好广告，就说明你自己都不知道为什么要写这篇文章。</p>
+<p>（3）论文的理论框架<br>论文的论点在阐述的时候一定要有一个理论框架，特别是硕士论文，不可以只是一、二、三、四的罗列。论文的理论水平往往就从这里彰显了，理论和观点的差别就是系统性。理论框架如同纲，纲举目张，论文就成一体了，否则会有拍脑袋的嫌疑，别人也会质疑结论的覆盖面和价值。</p>
+<p>（4）学会写标题<br>好的标题应该是简明扼要，并且要求全文标题风格一致，这也是训练概括能力的时机。</p>
+<p>（5）重视结论写作<br>结论写作：概述能力和敏锐的判断能力。</p>
+<p>结论中的第一块是概述你的工作，实际上是在阐述你对所做工作的核心内容及其价值的认识。</p>
+<p>结论中的第二块是对研究不足的分析，对研究过程、方法、结果的反思，是你进一步提高发展的基础。每次写论文的时候都有意识的训练自己反思。</p>
+<p>结论中的第三块是对下一步研究的建议，体现了你对这个领域研究发展趋势的把握，有意识的培养自己对未来趋势的判断能力。</p>
+<p>（6）毕业论文的结构<br>建议：在查找论文相关工作的同时，搜索国外大学的博士论文。揣摩他们的论文组织，一般来说国外大学在论文写作方面会比国内规范很多。</p>
+<p>（7）为什么要给国际会议投稿？</p>
+<p>向国际会议投稿有两个好处：</p>
+<p>1）得到对你的研究的专业级指点：国际会议论文的评审有的是很严格、很认真的，评委会非常仔细地告诉你：你的研究哪里有问题、你的文章应该怎么修改。大部分的评语都非常专业尽职，所以对你的发展很有好处；</p>
+<p>2）中国有很多工作做得非常好，就是缺乏使者传播到世界，你承担这样一个角色的好处是：让你的工作得到国际国内的认可，这也是你在学术圈子中建立Leadership的重要一步:让国外的学者知道你。</p>
+<p>（8）怎样提高论文投稿命中率</p>
+<p>首先，需要翻看该杂志最近一年的文章，看看杂志的定位、读者群，文章偏好；其次，将你的文章按照该杂志的风格来写，或者为你的文章寻找一个风格定位一致的杂志，这样就可以增加刊登机会。另外，关注杂志的特刊征稿，适时投稿，也会增加命中率。</p>
+<p>（9）论文最后的审校</p>
+<p>在论文经过与导师的讨论，几番修改之后，准备付印之前，一定要再仔仔细细地读一遍，改正所有句子不通顺和错别字的地方，否则，不经心的粗心，会给评阅人员留下不好的印象。另外，最后审查一下目录：章节的标题是否简明扼要，句型是否有一定的对称性和一致性？</p>
+<p>（11）为什么要写立项报告？</p>
+<p>每年都会有一些立项的机会，老师也会让学生围绕他的论文写一份立项报告。学生是否意识到这是一个难得的锻炼机会呢？</p>
+<p>首先，立项报告是向别人解释我要做的是什么、为什么要做、它的价值是什么，写立项的过程是进一步理清思路的过程，只有自己想清楚了，才有可能让看的人明白。这也就是为什么有些人是先自己投资做事情，做到一定程度后再写立项申请，结果命中率大增的原因：因为那时候的立项报告确实是言之有物，可操作性强。</p>
+<p>其次，因为老师也希望立项成功，所以你写好的立项报告老师会仔细地改，将老师修改后的版本与你的原先版本进行仔细比较，揣摩立项报告每个成分应该怎么表达，会提高你对这类层次文书的写作感觉，也会为你工作后尽快地建立自己的一方沃土打下基础。</p>
+<p>如何看待写而不中的问题？有人因此觉得是浪费时间，因为项目的中与不中是多种因素综合的结果，并不完全取决于立项报告的质量。对于这个问题，我的处理态度是：不要以中与不中论成败，要看到写立项报告的种种好处，比如这是很好的练笔，再比如每写一次，对项目的认识就更加深一步。</p>
+<p>学生写立项报告最薄弱的环节是不会写目标和意义，因为不能站在更高的层次，或者在一个更大的环境下看问题，只知道自己在做什么，看不到自己工作的价值。所谓学会拔高，也可以算作立项报告对我们的一项训练吧。</p>
+<hr>
+<h3 id="论文写作LaTeX"><a href="#论文写作LaTeX" class="headerlink" title="论文写作LaTeX"></a>论文写作LaTeX</h3><p>撰写论文时候，使用LaTeX进行写作。使用的软件为TexStudio。关于TeX的介绍，可以参考网站：<a href="https://www.jianshu.com/p/9f44e57ac4d0" target="_blank" rel="noopener">LaTex学习系列</a>。</p>
+<p>关于TeXLive和TeXStudio环境的配置：</p>
+<p><a href="http://tug.org/texlive/acquire-iso.html" target="_blank" rel="noopener">TeXLive下载地址</a>，<a href="http://texstudio.sourceforge.net/" target="_blank" rel="noopener">TeXStudio下载地址</a>，</p>
+<p>下载之后，按照提示一路安装。之后，对其进行配置。配置好之后，保证可以编译中文和英文文档。</p>
+<p>pdfTeX, TeX是一个‘宏语言’，LaTeX是建立在TeX之上的一种格式，是使用最为广泛的格式。</p>
+<p>西文文档：pdfLaTeX、XeLaTeX</p>
+<p>中文文档：XeLaTeX</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">发行版本：TeX Live</span><br><span class="line">引擎：LaTeX</span><br><span class="line">编译器：XeLaTeX</span><br><span class="line">编辑环境：TeXStudio</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>将texstudio的pdf预览区域背景颜色设置为，在导言区加入下面的语句：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\usepackage&#123;xcolor&#125;</span><br><span class="line">\definecolor&#123;cream&#125;&#123;RGB&#125;&#123;253, 246, 227&#125;</span><br><span class="line">\pagecolor&#123;cream!90&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将texstudio的latex编写区域的背景颜色设置为，需要在C:\Users\T-WON\AppData\Roaming\texstudio目录下，找到texstudio.ini配置文件，打开之后，在[format]后面，将所要设置的内容保存在下面，即可。</p>
+<hr>
+<h3 id="如何听讲座"><a href="#如何听讲座" class="headerlink" title="如何听讲座"></a>如何听讲座</h3><p>(1) 事先了解一些讲座人的经历或读些这个人的文章，或者相关话题，可以保证所提出的问题是这个人有可能回答出来的。经常会看到讲座的提问者只关心自己心中的问题，没有考虑到这个人是不是在这个问题上有积累，这样的结果是他不会给你满意的回答，在有限的讲座时间内这是一种机会浪费，当然提出一个问题投石问路也是可以的。</p>
+<p>(2) 学会快速做笔记的能力，笔记可以是顺序地纪录要点，也可以是画出内容之间的关联。重要的是在听的时候要不断地质疑，记录下你的怀疑，你的推论，看看你的想法和讲座人是否一样。同时，也为后面的提问做好准备。（《聪明人都用方格笔记本》）</p>
+<p>(3) 在听讲座的时候要注意体会讲座人的逻辑，他的理论依据，他是怎么成长的，哪些因素影响了他的思路和发展。</p>
+<p>(4) 对于别人的提问，可以在心里给出回答，比较自己的回答与他人的区别。不要对别人的问题不屑一顾，尝试理解他为什么会提这个问题，还有哪些潜台词没有说出来，也许这里就有一个你没有想到的角度。</p>
+<p>(5) 扪心自问：在本专业技术领域你可以做些什么事情？意义？可行性？价值?</p>
+]]></content>
+      <categories>
+        <category>科研</category>
+      </categories>
+      <tags>
+        <tag>科研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Github+Hexo搭建个人网站</title>
+    <url>/2020/cka0u3h7l0007awgx7pmuer4d/</url>
+    <content><![CDATA[<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/gh_cover.png" style="zoom:40%">
+</div>
+
+
+<p>使用github pages服务搭建博客的优势：</p>
+<ul>
+<li>全部是静态文件，访问速度快</li>
+<li>免费方便，不用服务器不需要后台</li>
+<li>可以随意绑定自己的域名</li>
+<li>数据安全，基于github的版本管理</li>
+<li>博客内容可以轻松打包转移发布到其他的平台</li>
+<li>…</li>
+</ul>
+<hr>
+<p>下面，就是基于Github和Hexo，从0到1搭建一个完全属于你自己的网站。按照这个步骤进行操作的话，你很快就会拥有一个属于自己的个性化网站。</p>
+<hr>
+<a id="more"></a>
+
+
+
+<h3 id="创建Github个人仓库"><a href="#创建Github个人仓库" class="headerlink" title="创建Github个人仓库"></a>创建Github个人仓库</h3><p>进入到GitHub网站，登录(注册)你的GitHub账号，点击GitHub中的New repository创建新仓库，仓库名称必须为username.github.io，其中username是你的用户名，(你的用户名.github.io)，这个是固定写法，比如我的仓库为：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/github01.png" style="zoom:80%">
+</div>
+
+
+
+<p>这样将来你的网站访问地址就是username.github.io，非常方便。</p>
+<p>由此可见，每一个github账户最多可创建一个这样直接使用域名访问的仓库。</p>
+<hr>
+<h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p>Git是开源的分布式版本控制系统，用于敏捷高效的处理项目。我们网站在本地搭建好之后，需要使用Git同步到GitHub上。可以安装git for windows(或者其他的git客户端)</p>
+<p>安装成功后，需要将你的Git与GitHub账户绑定。在菜单栏中搜索Git Bash，设置user.name和user.email配置信息：(输入时候含有引号)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;你的GitHub用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<p>生成ssh密钥文件：(也是在Git Bash中)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;你的GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<p>然后直接三个回车操作，默认不需要设置密码。然后，找到生成的.ssh的文件夹中的id_rsa.pub文件，将里面的内容全部复制：（注意：id_rsa.pub为公钥文件，可以公开；id_rsa为私钥文件，保密）</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/github02.png" style="zoom:60%">
+</div>
+
+
+
+<p>之后，登录GitHub，打开settings界面，选择SSH and GPG keys，选择New SSH Key选项。</p>
+<p>如图所示：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/github03.png" style="zoom:70%">
+</div>
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/github04.png" style="zoom:80%">
+</div>
+
+
+
+<p>Title为标题，任意填写即可。将刚刚复制的id_ras.pub中的内容粘贴在Key里面，最后点击Add SSH Key即可。</p>
+<p>在Git Bash中检测GitHub公钥是否设置成功，输入ssh git @ github.com: 检测结果如图所示：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/github05.png" style="zoom:80%">
+</div>
+
+
+
+<p>如上提示，即说明了设置成功。</p>
+<p>这里之所以设置GitHub密钥原因是，通过非对称加密的公钥与私钥来完成加密，公钥放置在GitHub上，私钥放置在自己的电脑里。GitHub要求每次推送代码都是合法用户，所以每次推送都需要输入账号密码验证推送用户是否是合法用户，为了省去每次输入密码的步骤，采用了ssh，当你推送的时候，git就会匹配你的私钥跟GitHub上面的公钥是否是配对的，若是匹配就认为你是合法用户，则允许推送。这样可以保证每次的推送都是正确合法的。使用ssh key解决了本地和服务器的连接问题。</p>
+<hr>
+<h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h3><p>Hexo基于Node.js，在Node.js官网中下载安装包。按照默认提示一路安装。注意安装Node.js会包含环境变量以及npm的安装，安装后，检测Node.js是否安装成功，在win的cmd命令行中输入node -v，检测npm是否安装成功，输入npm -v。假如如下图出现安装的版本号，说明Node.js和npm安装成功了。</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/nodejs01.png" style="zoom:80%">
+</div>
+
+
+
+<p>到此，安装Hexo的环境已经全部搭建完成。</p>
+<p>Windows7<br>node.js @ v12.16.0<br>npm @ 6.13.4<br>git @ 2.9.0<br>hexo @ 3.1.0</p>
+<hr>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>Hexo是一款基于Node.js的静态博客框架，依赖少易安装使用，可以方便的生成静态网页托管在Github上，是搭建博客的首选框架。</p>
+<p>首先需要在本地电脑中创建一个文件夹，Hexo框架和以后你自己发布的网页均在这个文件夹中，所以设置好之后，此文件夹最好不要随意改动。可以命名为SelfWeb。右键单击SelfWeb文件夹，选择Git Bash Here，进入Git Bash界面。(所有的命令行操作推荐使用Git Bash)</p>
+<p>然后，使用npm命令安装Hexo，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>安装好之后，使用命令 hexo -v 查看版本号，进行检测。</p>
+<p>接下来，对hexo进行初始化，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<p>hexo会自动下载一些文件到这个目录。</p>
+<p>然后，进入这个SelfWeb文件夹地址，在GitBash中输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>然后，执行命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g # 生成</span><br><span class="line">hexo s # 启动服务。ctrl+c关闭此服务器</span><br></pre></td></tr></table></figure>
+
+<p>之后，hexo就会在public文件夹中生成相关的html文件，这些文件将来都是要提交到github去的。</p>
+<p>最后，在浏览器中访问<a href="http://localhost:4000" target="_blank" rel="noopener">localhost:4000</a>，既可以看到网页发布的内容。第一次初始化后，hexo已经帮助我们写了一篇名为Hello World的文章。此时进行的操作，只是在本地预览。</p>
+<p>(注意此处的localhost:4000网址，不要直接写到markdown明文下面，在hexo g 过程中会报错。)</p>
+<hr>
+<h3 id="推送网站"><a href="#推送网站" class="headerlink" title="推送网站"></a>推送网站</h3><p>上面的操作只是在本地预览，接下来要做的就是进行推送网站，也就是发布网站，让我们的网站可以被更过的人访问。</p>
+<p>将Hexo和GitHub关联起来，打开处在根目录下的站点的配置文件_config.yml，将最后的deploy部分修改如下，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">type:git</span><br><span class="line">repository:填入你之前在Github上创建仓库的完整路径，记得加上.git</span><br><span class="line">branch:master</span><br></pre></td></tr></table></figure>
+
+<p>参考如下：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/hexo01.png" style="zoom:40%">
+</div>
+
+
+
+<p>保存站点配置文件。</p>
+<p>此时还需要安装一个Git部署插件，在SelfWeb文件夹中使用Git Bash打开命令行，输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>然后输入下面三条命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g # 生成</span><br><span class="line">hexo d #部署网站</span><br></pre></td></tr></table></figure>
+
+<p>完成之后，打开浏览器，在地址栏中输入放置个人网站的仓库路径，即username.github.io，即可以在网络上进行访问了。</p>
+<p>比如我的Gituhub用户名：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/web01.png" style="zoom:80%">
+</div>
+------
+
+<h3 id="域名绑定"><a href="#域名绑定" class="headerlink" title="域名绑定"></a>域名绑定</h3><p>通过上面的操作之后，可以使用默认的username.github.io来访问创建的网站。假如想要有一个更加个性</p>
+<p>首先，注册一个网站域名，专属于自己的个人网站域名。申请域名可以选择阿里云。如果你已经有了空闲的域名就无需购买，直接使用即可。(这里也是唯一一处可能需要花钱的地方。)</p>
+<p>如下图所示，是我在阿里云上购买的网站域名，以及根据自己的github.io设置的解析：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/webdomain01.png" style="zoom:40%">
+</div>
+
+<div align="center">
+        <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/webdomain02.png" style="zoom:40%">
+</div>
+
+
+
+<p>域名配置最常见的有2种方式，CNAME和A记录，CNAME填写域名，A记录填写IP。在填写A记录时候，需要先在cmd中ping一下username.github.io的IP地址。在CNAME中，记录值为username.github.io。</p>
+<p>购买设置好域名之后，需要在github中进行设置。</p>
+<p>1 登录GitHub，进入之前创建的仓库username.github.io，点击settings，在GitHub Pages页面中，设置Custom domain，输入你购买的域名，如下图是我购买的域名：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/webdomain03.png" style="zoom:40%">
+</div>
+
+
+
+<p>之后，点击save保存。</p>
+<p>2 进入本地的博客文件夹，进入E:\SynologyDrive\Hobby\SelfWeb\source\目录下，创建一个记事本文件，输入你的域名，最好不要带有www的格式。如图所示：</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/webdomain04.png" style="zoom:40%">
+</div>
+
+
+
+<p>保存为CNAME文件，注意保存成所有文件而不是txt文件。</p>
+<p>在绑定了新域名之后，原来的username.github.io并没有失效，而是会自动跳转到你的新域名。</p>
+<hr>
+<p>完成以上操作之后，在SelfWeb目录中，使用Git Bash命令进入命令行，依次输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>这时候，打开浏览器，在地址栏上输入你的个性化域名，就会直接进入你自己搭建的网站。</p>
+<hr>
+<p>通过以上操作，就可以实现了个人网页的搭建，既可以使用github.io访问，也可以使用个性化域名登录。</p>
+<p>下面的内容，就是如何在网页上发布文章，以及进行相关的个性化设置。</p>
+<hr>
+<h3 id="Hexo命令"><a href="#Hexo命令" class="headerlink" title="Hexo命令"></a>Hexo命令</h3><p>常用的Hexo命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo -g <span class="comment">#安装hexo</span></span><br><span class="line">$ npm update dexo -g <span class="comment">#升级</span></span><br><span class="line">$ hexo init <span class="comment">#初始化博客</span></span><br><span class="line"></span><br><span class="line">$ hexo new <span class="string">"my blog"</span> <span class="comment"># 新建文章，实际命令行中无需引号</span></span><br><span class="line">$ hexo generate <span class="comment"># 生成静态页面至public目录</span></span><br><span class="line">$ hexo serve <span class="comment"># 启动服务预览</span></span><br><span class="line">$ hexo deploy <span class="comment"># 部署到github</span></span><br><span class="line">$ hexo <span class="built_in">help</span></span><br><span class="line">$ hexo version</span><br><span class="line">$ hexo clean <span class="comment"># 清除缓存</span></span><br></pre></td></tr></table></figure>
+
+<p>命令缩写：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo n == hexo new </span><br><span class="line">$ hexo g == hexo generate </span><br><span class="line">$ hexo s == hexo serve </span><br><span class="line">$ hexo d == hexo deploy</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo clean <span class="comment"># 清除缓存</span></span><br></pre></td></tr></table></figure>
+
+<p>假如在重新进行deploy过程中，出现网页没有更新的问题，可以尝试将根目录下的.deploy_git文件夹删除掉。之后，在进行hexo d操作。</p>
+<p>或者是根据错误的信息，尝试下面的命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ env GIT_SSL_NO_VERIFY=ture hexo d</span><br></pre></td></tr></table></figure>
+
+<p>同时，还需要注意，在国内有时候登录GitHub网站不稳定，导致无法访问github中的repo，导致hexo d失败。</p>
+<hr>
+<h3 id="Hexo主题"><a href="#Hexo主题" class="headerlink" title="Hexo主题"></a>Hexo主题</h3><p>可以选择不同风格的Hexo主题。当选择好要使用的主题后，首先需要下载这个主题。所有的操作还是在SelfWeb这个文件夹地址下，使用Git Bash命令。</p>
+<p>比如下载一个Next主题，代码如下：(不同主题的git clone代码不一样)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
+
+<p>这样，就是将next主题下载到了SelfWeb目录下的themes主题下的next文件夹中。</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/hexotheme01.png" style="zoom:40%">
+</div>
+
+
+
+<p>然后，打开站点的_config.yml配置文件，修改主题为next:</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/hexotheme02.png" style="zoom:60%">
+</div>
+
+
+
+<p>接下来，打开themes文件下里面的next文件夹下的主题的_config.yml配置文件，找到Scheme Settings部分，</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/TaylorWon/ImageBed/master/img/blog/hexotheme03.png" style="zoom:60%">
+</div>
+
+
+
+<p>可以根据自己的喜好，来选择不同的风格。</p>
+<p>修改保存完之后，再次在Git Bash里面运行hexo g, hexo d命令，查看最终的效果。假如出现了其他的问题，可以先运行hexo clean来清理一下public的内容。</p>
+<p>如果，需要修改为其他风格的主题，步骤和上面的完全一样。</p>
+<hr>
+<p>Hexo可使用的主题List以及示例：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">Next主题 -- </span><br><span class="line">Pisces scheme </span><br><span class="line">example:https://notes.iissnan.com/</span><br><span class="line">官方文档:http://theme-next.iissnan.com/</span><br><span class="line">进阶配置:https://www.jianshu.com/p/1f8107a8778c</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">Diaspora主题 -- </span><br><span class="line">example:http://fech.in/</span><br><span class="line">Github地址:https://github.com/Fechin/hexo-theme-diaspora</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">Chic主题 --</span><br><span class="line">Github地址:https://github.com/Siricee/hexo-theme-Chic</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">Ayer主题 -- </span><br><span class="line">example:https://shen-yu.gitee.io/</span><br><span class="line">Gthub地址:https://github.com/Shen-Yu/hexo-theme-ayer</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="个性化设置"><a href="#个性化设置" class="headerlink" title="个性化设置"></a>个性化设置</h3><p>下面，在选择主题 – hexo-theme-Ayer基础上，对其进行个性化设置。</p>
+<p>参考教程为：<a href="https://shen-yu.gitee.io/2019/ayer/" target="_blank" rel="noopener">Ayer中文说明</a></p>
+<hr>
+<h3 id="撰写文章"><a href="#撰写文章" class="headerlink" title="撰写文章"></a>撰写文章</h3><p>首先，定位到SelfWeb根目录地址下，使用GitBash运行，执行命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new my-first-blog</span><br></pre></td></tr></table></figure>
+
+<p>这样hexo会在./source/_posts/地址下生成相关的md文件。</p>
+<p>然后，使用电脑中安装的markdown编辑软件(Typora)进行编辑。</p>
+<p>markdown文件的文件头格式的修改：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title:</span><br><span class="line">date: yyyy-mm-dd hh:mm:ss</span><br><span class="line">id:</span><br><span class="line">tags:</span><br><span class="line"><span class="bullet">	- </span>1</span><br><span class="line"><span class="bullet">	- </span>2</span><br><span class="line">categories:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>最后，将此markdown文件编写好之后，进行后续的操作将其发布到网站上去：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+
+<h3 id="Git分支进行多终端工作"><a href="#Git分支进行多终端工作" class="headerlink" title="Git分支进行多终端工作"></a>Git分支进行多终端工作</h3><p>当使用不同的电脑工作时候，需要登录到网站上进行操作，那么需要利用git的分支系统进行多终端工作。</p>
+<p>未完待续 …</p>
+<hr>
+<h3 id="图床搭建"><a href="#图床搭建" class="headerlink" title="图床搭建"></a>图床搭建</h3><p>图床工具，就是自动把本地图片转换成链接的一款工具，本文中使用PicGo图片上传工具，配合GitHub图床进行设置。</p>
+<p>解决思路：将本地的文件，或者剪切板上面的截图发送到图床，然后生成在线图片的链接，走到哪里就可以用到哪里。</p>
+<p>具体的操作流程，参考网站：<a href="https://github.com/Molunerfinn/PicGo" target="_blank" rel="noopener">PicGo-GitHub</a>, <a href="https://www.jianshu.com/p/9d91355e8418" target="_blank" rel="noopener">图床工具的使用-PicGo</a>. <a href="https://picgo.github.io/PicGo-Doc/zh/guide/config.html#%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener">PicGo使用</a></p>
+<p>注意，在picgo中上传图片时候，可以上传到img/地址，还可以在这个下面进行子文件夹设置，如img/blog/。</p>
+<p>注意保证图片的链接是有效，且可以在国内访问的。</p>
+<p>在使用GitHub作为图床时候，有时候在博客中您无法加载上图床中的图片，现进行如下的设置：</p>
+<p>1 在hosts文件中，将GitHub相关的网站的IP地址和网站保存在这个文件中。</p>
+<p>199.232.28.133 raw.githubusercontent.com</p>
+<p>注意，在修改hosts文件时候，需要有管理员权限授权，进行相关的设置。</p>
+<p>2 在cmd中执行：ipconfig/flushdns 命令。</p>
+<p>3 重新访问github中的图片，发现可以打开浏览了，说明设置成功了。命令为：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">![](url)</span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span></span></span><br><span class="line"><span class="code">    &lt;img src="url" style="zoom:10%" /&gt;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"url"</span> <span class="attr">style</span>=<span class="string">"zoom:10%"</span> /&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+      </tags>
+  </entry>
+</search>
